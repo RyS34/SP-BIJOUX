@@ -1,0 +1,17 @@
+/* ========================================
+   RESET GENERAL
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* EVITA SCROLL HORIZONTAL */
+html,
+body {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+}

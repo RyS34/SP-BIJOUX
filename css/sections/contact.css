@@ -1,0 +1,85 @@
+/* =========================
+   SECCIÓN DE CONTACTO
+========================= */
+
+.contact-section {
+    padding: var(--gap-lg) var(--container-padding);
+    background: linear-gradient(to bottom, #ffffff, var(--bg));
+}
+
+/* HEADER CONTACTO */
+
+.contact-section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.contact-section-header span {
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+}
+
+.contact-section-header h2 {
+    font-family: var(--ff-heading);
+    font-size: 2.2rem;
+    margin-top: 10px;
+}
+
+/* =========================
+   FORMULARIO
+========================= */
+
+.shopify-form {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 15px 35px rgba(140, 102, 158, 0.15);
+}
+
+.shopify-form textarea {
+    padding-left: 15px !important;
+}
+
+/* =========================
+   CAMPOS
+========================= */
+
+.sidebar-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #fafafa;
+}

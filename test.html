@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Firebase Login</title>
+</head>
+<body>
+
+<h2>Prueba Login Firebase</h2>
+
+<button onclick="testLogin()">PROBAR LOGIN</button>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+/* 🔥 TU CONFIG FIREBASE */
+const firebaseConfig = {
+  apiKey: "AIzaSyCdM5204f7boeSJpMrnQ7T24PBpzNlidyQ",
+  authDomain: "paginaweb-sp-bijoux.firebaseapp.com",
+  projectId: "paginaweb-sp-bijoux"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+/* 🔥 TEST LOGIN */
+window.testLogin = async function () {
+    try {
+        const user = await signInWithEmailAndPassword(
+            auth,
+            "adminsp@bijoux.com",
+            "123456"
+        );
+
+        alert("LOGIN OK: " + user.user.email);
+
+    } catch (e) {
+        alert("ERROR: " + e.code);
+        console.log(e);
+    }
+};
+</script>
+
+</body>
+</html>

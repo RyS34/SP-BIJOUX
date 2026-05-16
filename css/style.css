@@ -1,0 +1,31 @@
+/* ========================================
+   BASE
+======================================== */
+
+@import url('./base/variable.css');
+@import url('./base/reset.css');
+@import url('./base/global.css');
+
+/* ========================================
+   LAYOUT
+======================================== */
+
+@import url('./layout/header.css');
+
+/* ========================================
+   SECTIONS
+======================================== */
+
+@import url('./sections/hero.css');
+@import url('./sections/categories.css');
+@import url('./sections/products.css');
+@import url('./sections/banner.css');
+@import url('./sections/contact.css');
+@import url('./sections/footer.css');
+
+/* ========================================
+   COMPONENTS
+======================================== */
+
+@import url('./components/sidebar.css');
+@import url('./components/forms.css');

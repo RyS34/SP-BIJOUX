@@ -1,0 +1,195 @@
+/* DISEÑO DE PRODUCTOS BASADO EN TUS VARIABLES */
+#product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
+    gap: 40px;
+    padding: 40px 0;
+    align-items: stretch;
+    justify-content: center;
+
+}
+
+/* Tarjeta individual de producto */
+.product-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    padding: 13px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.2s ease;
+    text-align: center;
+     
+}
+
+/* Efecto al pasar el mouse sobre la tarjeta de producto */
+.product-card:hover {
+    will-change: transform;
+    box-shadow: 0 10px 25px rgba(220, 179, 160, 0.2);
+}
+
+/* IMAGEN DEL PRODUCTO */
+.product-img-wrapper {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background: #f5f5f5;
+}
+
+/* Efecto al pasar el mouse sobre la imagen del producto */
+.product-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.3s ease;
+    }
+
+.product-card:hover .product-img-wrapper img {
+    transform: scale(1.05);
+}
+
+/* Efecto al pasar el mouse sobre la imagen del producto */
+.product-card h3 {
+    font-family: var(--ff-heading);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--text);
+}
+
+/* NOMBRE DEL PRODUCTO */
+.products h2 {
+    font-size: 2rem;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: var(--ff-heading);
+    transition: 0.4s ease;
+}
+
+/* Efecto al pasar el mouse sobre el título de productos */
+.products h2:hover {
+    text-shadow: 0 0 12px rgba(201, 160, 220, 0.6);
+    transform: translateY(-3px);
+}
+
+/* PRECIO DEL PRODUCTO */
+.price {
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+/* BOTÓN DE AGREGAR AL CARRITO */
+.add-to-cart-btn {
+    background: #f7edf9;
+    border: 1px solid var(--accent);
+    color: var(--text);
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    width: 100%;
+    margin-top: auto;
+    transition: var(--transition);
+}
+
+/* Efecto al pasar el mouse sobre el botón de agregar al carrito */
+.add-to-cart-btn:hover {
+    background: var(--accent);
+    color: white;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    padding: 18px;
+    margin-bottom: 25px;
+
+    background: #ffffff;
+    border-radius: 18px;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+
+    align-items: center;
+}
+
+.filters select,
+.filters input {
+    flex: 1;
+    min-width: 180px;
+
+    padding: 12px 14px;
+    border-radius: 12px;
+
+    border: 1px solid rgba(0,0,0,0.08);
+    background: #fafafa;
+
+    font-size: 14px;
+    outline: none;
+
+    transition: 0.2s ease;
+}
+.filters select:focus,
+.filters input:focus {
+    border-color: #c9a0dc;
+    box-shadow: 0 0 0 4px rgba(201,160,220,0.2);
+    background: white;
+}
+.filters select:hover,
+.filters input:hover {
+    transform: translateY(-2px);
+}
+/* MODAL DE IMAGEN AMPLIADA */
+/* =========================
+   MODAL BASE
+========================= */
+.image-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.25s ease;
+
+    z-index: 9999;
+}
+
+/* ACTIVO */
+.image-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* IMAGEN */
+.image-modal img {
+    max-width: 90%;
+    max-height: 90%;
+    cursor: zoom-in;
+    transform: scale(0.7);
+    transition: 0.25s ease;
+    border-radius: 10px;
+}
+
+/* ZOOM cuando abre */
+.image-modal.active img {
+    transform: scale(1);
+}
+
+.image-modal .close-modal {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}

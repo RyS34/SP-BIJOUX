@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SP BIJOUX Admin</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            font-family: 'Poppins', sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(201, 160, 220, 0.2), transparent 25%),
+                radial-gradient(circle at bottom right, rgba(255, 192, 203, 0.2), transparent 25%),
+                #f7f8fc;
+            color: #2f2f2f;
+            min-height: 100vh;
+            padding: 30px;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 270px;
+            min-height: 100vh;
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 30px 22px;
+            position: sticky;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar-logo {
+            width: 170px;
+            height: 180px;
+            border-radius: 90px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            margin-inline: auto;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo-admin {
+            width: 170px;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 18px;
+        }
+
+        .sidebar-brand {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 35px;
+        }
+
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .sidebar-menu a {
+            text-decoration: none;
+            color: #555;
+            padding: 16px 18px;
+            border-radius: 18px;
+            transition: 0.3s;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu .active {
+            background: linear-gradient(135deg, #c9a0dc, #b88dcd);
+            color: white;
+            transform: translateX(4px);
+            box-shadow: 0 10px 25px rgba(201, 160, 220, 0.25);
+        }
+
+        .sidebar-logout {
+            border: none;
+            background: #ffe5ea;
+            padding: 15px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .sidebar-logout:hover {
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            flex: 1;
+            padding-left: 30px;
+        }
+
+        /* HEADER */
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            padding: 22px 30px;
+            border-radius: 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .brand h1 {
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .brand p {
+            color: #777;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        .logout-btn {
+            border: none;
+            background: linear-gradient(135deg, #c9a0dc, #b88dcd);
+            color: white;
+            padding: 14px 22px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 10px 25px rgba(201, 160, 220, 0.35);
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* DASHBOARD */
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+            margin-bottom: 35px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(20px);
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #c9a0dc, #e5bdd6);
+        }
+
+        .card h3 {
+            font-size: 15px;
+            color: #777;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        /* GRID */
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        /* PANELS */
+
+        .panel {
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .panel-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .panel-title h2 {
+            font-size: 22px;
+        }
+
+        /* FORM */
+        /*Para PC*/
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* 👈 aquí lo mejoras */
+            gap: 12px;
+            background: #fff;
+            padding: 18px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-grid input {
+            width: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            padding: 15px 16px;
+            outline: none;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .form-grid input:focus {
+            border-color: #c9a0dc;
+            box-shadow: 0 0 0 5px rgba(201, 160, 220, 0.15);
+        }
+
+        .save-btn {
+            border: none;
+            padding: 16px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #c9a0dc, #b88dcd);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: 0.3s;
+            box-shadow: 0 10px 25px rgba(201, 160, 220, 0.35);
+        }
+
+        .save-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* PRODUCTOS */
+
+        #productos-container {
+            display: grid;
+            gap: 18px;
+        }
+
+        .producto-admin {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            background: white;
+            border-radius: 22px;
+            padding: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+            flex-wrap: wrap;
+        }
+
+        .producto-admin:hover {
+            transform: translateY(-3px);
+        }
+
+        .producto-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .producto-admin img {
+            width: 85px;
+            height: 85px;
+            object-fit: cover;
+            border-radius: 18px;
+            flex-shrink: 0;
+        }
+
+        .producto-admin h4 {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .producto-admin p {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .icon-btn {
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .delete-btn {
+            background: #ffe5ea;
+        }
+
+        .edit-btn {
+            background: #efe5ff;
+        }
+
+        .icon-btn:hover {
+            transform: scale(1.08);
+        }
+
+        /* PEDIDOS */
+
+        #pedidos-container {
+            display: grid;
+            gap: 18px;
+        }
+
+        .pedido {
+            background: white;
+            border-radius: 22px;
+            padding: 22px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .pedido h3 {
+            margin-bottom: 12px;
+        }
+
+        .pedido p {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .pedido-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .pedido-actions button {
+            border: none;
+            padding: 12px 16px;
+            border-radius: 14px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .enviado {
+            background: #efe5ff;
+        }
+
+        .entregado {
+            background: #dfffe8;
+        }
+
+        .pedido-actions button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 980px) {
+
+            body {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .main-content {
+                padding-left: 0;
+                width: 100%;
+            }
+
+            .sidebar {
+                width: 100%;
+                min-height: auto;
+                position: relative;
+                margin-bottom: 20px;
+            }
+
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            /* 📦 PRODUCTOS MEJORADO */
+            #productos-section .panel {
+                padding: 24px;
+                border-radius: 30px;
+            }
+
+            /*Para movil*/
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .form-grid input {
+                font-size: 15px;
+                padding: 14px;
+            }
+
+            .save-btn {
+                width: 100%;
+            }
+
+            #productos-container {
+                gap: 14px;
+            }
+
+            .producto-admin {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 14px;
+                gap: 12px;
+            }
+
+            .producto-info {
+                flex-direction: row;
+                gap: 12px;
+            }
+
+            .producto-admin img {
+                width: 70px;
+                height: 70px;
+            }
+
+            .actions {
+                width: 100%;
+            }
+
+            .icon-btn {
+                flex: 1;
+                height: 42px;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            body {
+                padding: 18px;
+            }
+
+            .topbar {
+                flex-direction: column;
+                gap: 20px;
+                align-items: flex-start;
+            }
+
+            .producto-admin {
+                flex-direction: column;
+                padding: 12px;
+            }
+
+            .producto-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .producto-admin img {
+                width: 100%;
+                height: 160px;
+            }
+
+            .actions {
+                flex-direction: row;
+            }
+
+            .card p {
+                font-size: 26px;
+            }
+        }
+
+        /* =========================
+           MODAL EDITAR PRODUCTO
+        ========================= */
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(6px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .edit-modal-box {
+            width: 100%;
+            max-width: 520px;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 28px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            animation: modalShow 0.25s ease;
+        }
+
+        .edit-modal-box::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .edit-modal-box::-webkit-scrollbar-thumb {
+            background: #d6b3e6;
+            border-radius: 20px;
+        }
+
+        @keyframes modalShow {
+
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 22px;
+        }
+
+        .modal-header h2 {
+            font-size: 24px;
+            color: #2f2f2f;
+        }
+
+        .close-modal {
+            width: 42px;
+            height: 42px;
+            border: none;
+            border-radius: 14px;
+            background: #ffe5ea;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal-form {
+            display: grid;
+            gap: 16px;
+        }
+
+        .modal-form input {
+            width: 100%;
+            padding: 15px 16px;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: rgba(255, 255, 255, 0.9);
+            outline: none;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .modal-form input:focus {
+            border-color: #c9a0dc;
+            box-shadow: 0 0 0 5px rgba(201, 160, 220, 0.15);
+        }
+
+        #preview-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 22px;
+            background: #f4f4f4;
+            margin-top: 5px;
+        }
+
+        .save-modal-btn {
+            border: none;
+            padding: 16px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #c9a0dc, #b88dcd);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 25px rgba(201, 160, 220, 0.35);
+            margin-top: 10px;
+        }
+
+        .save-modal-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .admin-section {
+            display: none;
+        }
+
+        .admin-section.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="sidebar-logo">
+                <img src="assets/logo_principal.png" class="logo-admin">
+            </div>
+
+            <div class="sidebar-brand">
+                SP BIJOUX
+            </div>
+
+            <nav class="sidebar-menu">
+
+                <a href="#" class="active" onclick="mostrarSeccion('dashboard-section', this)">
+                    📊 Dashboard
+                </a>
+
+                <a href="#" onclick="mostrarSeccion('productos-section', this)">
+                    📦 Productos
+                </a>
+
+                <a href="#" onclick="mostrarSeccion('pedidos-section', this)">
+                    🧾 Pedidos
+                </a>
+
+                <a href="#" onclick="mostrarSeccion('ventas-section', this)">
+                    💰 Ventas
+                </a>
+
+                <a href="#" onclick="mostrarSeccion('config-section', this)">
+                    ⚙ Configuración
+                </a>
+
+            </nav>
+        </div>
+
+        <button class="sidebar-logout" onclick="logout()">
+            🚪 Salir
+        </button>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar">
+
+            <div class="brand">
+                <h1>💎 SP BIJOUX Admin</h1>
+                <p>Panel administrativo premium</p>
+            </div>
+
+            <button class="logout-btn" onclick="logout()">
+                Cerrar sesión
+            </button>
+
+        </div>
+
+        <!-- DASHBOARD -->
+
+        <section id="dashboard-section" class="admin-section active">
+
+            <div class="dashboard">
+
+                <div class="card">
+                    <h3>💰 Ingresos</h3>
+                    <p id="total-ingresos">S/ 0</p>
+                </div>
+
+                <div class="card">
+                    <h3>📦 Pedidos</h3>
+                    <p id="total-pedidos">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>⏳ Pendientes</h3>
+                    <p id="pedidos-pendientes">0</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- GRID -->
+
+        <div class="grid-layout">
+
+            <!-- PRODUCTOS -->
+
+            <section id="productos-section" class="admin-section">
+                <div class="panel">
+
+                    <div class="panel-title">
+                        <h2>📦 Productos Nuevos</h2>
+                    </div>
+
+                    <!-- FORMULARIO DE PRODUCTO -->
+                    <form class="shopify-form">
+                        <div class="input-group">
+                            <label for="nombre">Nombre del producto</label>
+                            <input type="text" id="nombre" required>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-group">
+                                <label for="precio">Precio (S/)</label>
+                                <input type="number" id="precio" step="0.01" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="stock">Stock</label>
+                                <input type="number" id="stock" required>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="categoria">Categoría</label>
+
+                            <select id="categoria" required>
+                                <option value="">Selecciona categoría</option>
+                                <option value="collares">Collares</option>
+                                <option value="anillos">Anillos</option>
+                                <option value="aretes">Aretes</option>
+                                <option value="pulseras">Pulseras</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="imagen">URL de la Imagen</label>
+                            <input type="text" id="imagen" placeholder="URL de la imagen">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="descripcion">Descripción</label>
+                            <textarea id="descripcion" rows="4"></textarea>
+                        </div>
+
+                        <button type="submit" class="floating-btn">
+                            <i class="fa fa-save"></i> Guardar producto
+                        </button>
+                    </form>
+
+
+                    <div id="productos-container"></div>
+
+                </div>
+            </section>
+
+            <!-- PEDIDOS -->
+
+            <section id="pedidos-section" class="admin-section">
+
+                <div class="panel">
+
+                    <div class="panel-title">
+                        <h2>🧾 Pedidos recientes</h2>
+                    </div>
+
+                    <div id="pedidos-container"></div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- VENTAS -->
+
+        <section id="ventas-section" class="admin-section">
+
+            <div class="panel">
+
+                <div class="panel-title">
+                    <h2>💰 Ventas</h2>
+                </div>
+
+                <p style="color:#777;">
+                    Próximamente estadísticas de ventas.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- CONFIG -->
+
+        <section id="config-section" class="admin-section">
+
+            <div class="panel">
+
+                <div class="panel-title">
+                    <h2>⚙ Configuración</h2>
+                </div>
+
+                <div class="form-grid">
+
+                    <input id="config-tienda" placeholder="Nombre de la tienda">
+
+                    <input id="config-email" placeholder="Correo administrador">
+
+                    <input id="config-whatsapp" placeholder="WhatsApp">
+
+                    <button class="save-btn" onclick="guardarConfiguracion()">
+                        Guardar configuración
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- EDIT MODAL -->
+
+        <div class="modal-overlay" id="edit-modal">
+
+            <div class="edit-modal-box">
+
+                <div class="modal-header">
+
+                    <h2>✏️ Editar producto</h2>
+
+                    <button class="close-modal" onclick="cerrarModal()">
+                        ✖
+                    </button>
+
+                </div>
+
+                <div class="modal-form">
+
+                    <input type="text" id="edit-nombre" placeholder="Nombre">
+
+                    <input type="number" id="edit-precio" placeholder="Precio">
+
+                    <input type="text" id="edit-imagen" placeholder="URL imagen">
+
+                    <input type="text" id="edit-categoria" placeholder="Categoría">
+
+                    <input type="number" id="edit-stock" placeholder="Stock">
+
+                    <!-- PREVIEW -->
+
+                    <img id="preview-img" src="" alt="Preview">
+
+                    <button class="save-modal-btn" onclick="guardarEdicion()">
+                        Guardar cambios
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- ADMIN JS -->
+        <script type="module" src="admin.js"></script>
+
+    </main>
+
+</body>
+
+</html>

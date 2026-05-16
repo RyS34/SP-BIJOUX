@@ -1,0 +1,39 @@
+/* SECCIÓN DE TESTIMONIOS */
+.footer {
+    background: white;
+    padding: var(--gap-lg) var(--container-padding);
+    margin-top: var(--gap-lg);
+    border-top: 1px solid #eee;
+}
+/* Contenedor del footer con diseño de grid para organizar el contenido */
+.footer-container {
+    display: grid;
+    grid-template-columns: 2fr repeat(3, 1fr);
+    gap: 40px;
+}
+/* Sección de la marca en el footer */
+.footer-brand h2 {
+    font-family: var(--ff-heading);
+    color: var(--accent);
+    margin-bottom: 15px;
+}
+/* Enlaces del footer */
+.footer-links h3 {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+/* Estilo para los enlaces dentro del footer */
+.footer-links a {
+    display: block;
+    text-decoration: none;
+    color: var(--muted);
+    margin-bottom: 10px;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+    padding-left: 5px;
+}

@@ -1,0 +1,97 @@
+/* FORMULARIO MODERNO */
+.shopify-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 24px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+/* Para que el textarea se vea bien con el diseño de grid */
+.form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+/* Para que el textarea ocupe todo el ancho del formulario */
+.form-item.full-width {
+    grid-column: 1 / -1;
+}
+/* Estilo para las etiquetas de los campos del formulario */
+.form-item label {
+    font-size: 12px;
+    color: #888;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+/* INPUT CON ICONO */
+.input-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 12px 14px;
+    background: #fff;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+/* El ícono dentro del input */
+.input-icon span {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: var(--accent);
+    pointer-events: none;
+}
+/* El campo de texto dentro del input con ícono */
+.input-icon input,
+.input-icon textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 5px 5px 5px 35px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25rem;
+    color: var(--text);
+}
+
+.input-icon:hover,
+.input-icon:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(201, 160, 220, 0.2);
+}
+
+/* BOTÓN */
+.floating-btn {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #c9a0dc, #b88dcd);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+/* Efecto al pasar el mouse sobre el botón */
+.floating-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(201, 160, 220, 0.3);
+    filter: brightness(1.05);
+}
+
+.floating-btn:active {
+    transform: translateY(0);
+    filter: brightness(0.95);
+}

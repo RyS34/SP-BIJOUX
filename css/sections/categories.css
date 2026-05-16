@@ -1,0 +1,56 @@
+/* SECCIÓN DE CATEGORÍAS */
+.categories {
+    padding: var(--gap-lg) var(--container-padding);
+    text-align: center;
+}
+/* Título de la sección de categorías */
+.categories h2 {
+    font-family: var(--ff-heading);
+    margin-bottom: 40px;
+    font-size: 2rem;
+    transition: 0.4s ease;
+}
+/* Efecto al pasar el mouse sobre el título de categorías */
+.categories h2:hover{
+    transform: translateY(-4px);
+    text-shadow: 0 0 15px rgba(220, 171, 160, 0.5);
+    letter-spacing: 2px;
+}
+/* Contenedor de las tarjetas de categorías */
+.category-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+/* Tarjeta individual de categoría */
+.category-card {
+    background: rgb(225, 195, 225);
+    padding: 30px 10px;
+    border-radius: var(--radius-md);
+    width: 150px;
+    transition: var(--transition);
+    cursor: pointer;
+    border: 1px solid #f0f0f0;
+}
+/* Icono dentro de la tarjeta de categoría */
+.category-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    display: block;
+}
+/* Nombre de la categoría */
+.category-card h3 {
+    font-size: 0.rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+}
+/* Efecto al pasar el mouse sobre la tarjeta de categoría */
+.category-card:hover {
+    border-color: var(--accent);
+    background: #e399e3;
+    transform: scale(1.05);
+}

@@ -1,0 +1,28 @@
+/* ========================================
+   ESTILOS GLOBALES
+======================================== */
+
+body {
+    font-family: var(--ff-body);
+    background: var(--bg);
+    color: var(--text);
+
+    line-height: 1.5;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   CONTENEDOR GENERAL
+======================================== */
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+html {
+    scroll-behavior: smooth;/* Para un desplazamiento suave al hacer clic en enlaces de anclaje */
+}

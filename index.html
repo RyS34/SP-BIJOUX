@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SP BIJOUX — Joyas y accesorios elegantes</title>
+
+    <meta name="description"
+        content="SP BIJOUX — Joyas y accesorios elegantes. Descubre anillos, collares y pulseras con envío rápido.">
+
+    <link rel="icon" href="assets/logo_principal.png" type="image/png">
+
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- SEO -->
+    <meta property="og:title" content="SP BIJOUX">
+    <meta property="og:description" content="Joyas y accesorios elegantes diseñados para resaltar tu estilo.">
+
+    <meta property="og:image" content="https://i.postimg.cc/rFFhCMHM/Gemini-Generated-Image-o67d8po67d8po67d.png">
+
+    <meta property="og:type" content="website">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- SCHEMA -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "SP BIJOUX",
+      "url": "http://localhost/"
+    }
+    </script>
+</head>
+
+<body>
+
+    <!-- ========================================
+         OVERLAY
+    ========================================= -->
+
+    <div class="overlay" id="overlay"></div>
+
+    <!-- ========================================
+         CARRITO
+    ========================================= -->
+
+    <div id="cart-sidebar" class="cart-sidebar" aria-hidden="true">
+
+        <div class="cart-header">
+
+            <h2>Tu carrito</h2>
+
+            <button id="close-cart" aria-label="Cerrar carrito">
+                <span>✖</span>
+            </button>
+
+        </div>
+
+        <div id="cart-items" class="cart-items"></div>
+
+        <div class="cart-footer">
+
+            <p>
+                Total: S/
+                <span id="cart-total">0.00</span>
+            </p>
+
+            <button id="checkout-btn" class="checkout-btn">
+                Pagar
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- ========================================
+         CONTACTO SIDEBAR
+    ========================================= -->
+
+    <div id="contact-sidebar" class="contact-sidebar" aria-hidden="true">
+
+        <div class="contact-header">
+
+            <h2>Contacto</h2>
+
+            <button id="close-contact" aria-label="Cerrar contacto">
+                <span>&times;</span>
+            </button>
+
+        </div>
+
+        <div class="contact-body">
+
+            <p class="contact-msg">
+                ¿Tienes alguna duda sobre una joya o un pedido especial?
+                Escríbenos.
+            </p>
+
+            <form class="sidebar-form" id="contact-form-sidebar">
+
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input type="text" placeholder="Ingresa tus datos..." required>
+                </div>
+
+                <div class="form-group">
+                    <label>Correo</label>
+                    <input type="email" placeholder="tu@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Mensaje</label>
+                    <textarea rows="5" placeholder="¿En qué podemos ayudarte?" required></textarea>
+                </div>
+
+                <button type="submit" class="checkout-btn">
+                    Enviar Mensaje ✨
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- ========================================
+         HEADER
+    ========================================= -->
+
+    <header class="header">
+
+        <!-- LOGO -->
+        <a href="#inicio" class="logo" aria-label="SP BIJOUX - inicio">
+
+            <img src="assets/logo_principal.png" alt="SP BIJOUX" width="180" height="40">
+
+        </a>
+
+        <!-- MENU DESKTOP -->
+        <nav class="menu" aria-label="Menú principal">
+
+            <a href="#inicio">Inicio</a>
+
+            <a href="#colecciones">Colecciones</a>
+
+            <a href="#productos">Productos</a>
+
+            <a href="#nueva-coleccion">
+                Nueva colección
+            </a>
+
+            <a href="#" id="nav-contact-link">
+                Contacto
+            </a>
+
+        </nav>
+
+        <!-- ACCIONES -->
+        <div class="header-actions">
+
+            <input id="search-input" type="search" placeholder="Buscar productos..." aria-label="Buscar productos">
+
+            <div class="icons">
+
+                <button aria-label="favoritos">
+                    ❤
+                </button>
+
+                <button id="cart-icon-btn" aria-label="carrito">
+
+                    🛒
+
+                </button>
+
+                <button id="menu-btn" aria-expanded="false" aria-controls="sidebar" aria-label="Abrir menú">
+
+                    ☰
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- ========================================
+         SIDEBAR MOBILE
+    ========================================= -->
+
+    <div class="sidebar" id="sidebar" aria-hidden="true">
+
+        <div id="close-btn" aria-label="Cerrar menú">
+
+            <span>✖</span>
+
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="#inicio" class="mobile-link">
+                Inicio
+            </a>
+
+            <a href="#colecciones" class="mobile-link">
+                Colecciones
+            </a>
+
+            <a href="#productos" class="mobile-link">
+                Productos
+            </a>
+
+            <a href="#nueva-coleccion" class="mobile-link">
+                Nueva colección
+            </a>
+
+            <a href="#" id="sidebar-contact-link">
+                Contacto
+            </a>
+
+        </nav>
+
+    </div>
+
+    <!-- ========================================
+         HERO
+    ========================================= -->
+
+    <section id="inicio" class="hero">
+
+        <div class="hero-text">
+
+            <h1>
+                Joyas que elevan tu estilo
+            </h1>
+
+            <p>
+                Elegancia, delicadeza y accesorios modernos
+                para resaltar tu esencia.
+            </p>
+
+            <button>
+                Comprar ahora
+            </button>
+
+        </div>
+
+        <div class="hero-image">
+
+            <img src="https://i.postimg.cc/tRLNy3Pg/coleccion-joyas-oro-1080x630.jpg" alt="joyas">
+
+        </div>
+
+    </section>
+
+    <!-- ========================================
+         CATEGORÍAS
+    ========================================= -->
+
+    <section id="colecciones" class="categories">
+
+        <h2>Explora tu estilo</h2>
+
+        <div class="category-container">
+
+            <div class="category-card">
+                <div class="icon">✨</div>
+                <h3>Aretes</h3>
+            </div>
+
+            <div class="category-card">
+                <div class="icon">💎</div>
+                <h3>Collares</h3>
+            </div>
+
+            <div class="category-card">
+                <div class="icon">💍</div>
+                <h3>Anillos</h3>
+            </div>
+
+            <div class="category-card">
+                <div class="icon">🪩</div>
+                <h3>Pulseras</h3>
+            </div>
+
+            <div class="category-card">
+                <div class="icon">👜</div>
+                <h3>Accesorios</h3>
+            </div>
+
+            <div class="category-card">
+                <div class="icon">🌸</div>
+                <h3>Nueva colección</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ========================================
+         PRODUCTOS
+    ========================================= -->
+
+    <section id="productos" class="products">
+
+        <h2>Productos destacados</h2>
+        <div class="filters">
+
+            <select id="categoryFilter">
+                <option value="all">Todas las categorías</option>
+                <option value="collares">Collares</option>
+                <option value="anillos">Anillos</option>
+                <option value="aretes">Aretes</option>
+                <option value="pulseras">Pulseras</option>
+            </select>
+
+            <input type="number" id="minPrice" placeholder="Precio mínimo">
+
+            <input type="number" id="maxPrice" placeholder="Precio máximo">
+
+            <select id="sortFilter">
+                <option value="default">Ordenar por</option>
+                <option value="low">Menor precio</option>
+                <option value="high">Mayor precio</option>
+            </select>
+
+        </div>
+
+        <div class="product-container" id="product-container"> </div>
+
+    </section>
+
+    <!-- ========================================
+         BANNER
+    ========================================= -->
+
+    <section id="nueva-coleccion" class="new-collection">
+
+        <div class="banner-container">
+
+            <img src="https://i.postimg.cc/mZ1V2fwd/Captura-de-pantalla-2026-05-11-002700.png" alt="Nueva colección"
+                class="banner-img">
+
+            <div class="banner-overlay"></div>
+
+            <div class="banner-content">
+
+                <span class="tag">
+                    NUEVA COLECCIÓN
+                </span>
+
+                <h2>
+                    Elegancia que resalta tu esencia
+                </h2>
+
+                <p>
+                    Descubre piezas únicas diseñadas para
+                    complementar tu estilo con sofisticación
+                    y delicadeza.
+                </p>
+
+                <button class="btn-lujo">
+                    Ver colección
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ========================================
+         FOOTER
+    ========================================= -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <h2>SP BIJOUX</h2>
+
+                <p>
+                    Joyas y accesorios elegantes diseñados
+                    para realzar tu estilo y personalidad.
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h3>Colecciones</h3>
+
+                <a href="#">Aretes</a>
+                <a href="#">Collares</a>
+                <a href="#">Anillos</a>
+                <a href="#">Pulseras</a>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h3>Ayuda</h3>
+
+                <a href="#">Envíos</a>
+                <a href="#">Pagos</a>
+                <a href="#">Soporte</a>
+                <a href="#">Términos</a>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h3>Redes Sociales</h3>
+
+                <a href="#">Instagram</a>
+                <a href="#">TikTok</a>
+                <a href="#">Facebook</a>
+                <a href="#">WhatsApp</a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <div id="image-modal" class="image-modal">
+        <span class="close-modal">&times;</span>
+        <img id="modal-img" src="" alt="Producto ampliado">
+    </div>
+
+    <!-- JS -->
+    <script type="module" src="script.js"></script>
+
+</body>
+
+</html>
