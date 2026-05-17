@@ -3,24 +3,34 @@
 ======================================== */
 
 .hero {
+    position: relative;
+
+    width: 100%;
+    min-height: 90vh;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    gap: 50px;
-
-    padding: 80px var(--container-padding);
-
-    background: linear-gradient(to right, #fff8fb, #fdfafd);
-
-    min-height: 80vh;
-
     overflow: hidden;
-
-    max-width: 1400px;
-    margin: 0 auto;
 }
 
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image: url("../Banner-Sp-Bijoux.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    transform: scale(1.05);
+
+    z-index: 1;
+}
 /* ========================================
    TEXTO
 ======================================== */
