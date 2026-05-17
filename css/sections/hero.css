@@ -6,15 +6,22 @@
     position: relative;
 
     width: 100%;
-    min-height: 90vh;
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    min-height: 75vh;
+
+    overflow: hidden;
 
     display: flex;
     align-items: center;
     justify-content: center;
-
-    overflow: hidden;
 }
 
+/* ========================================
+   FONDO
+======================================== */
 
 .hero::before {
     content: "";
@@ -22,120 +29,125 @@
     position: absolute;
     inset: 0;
 
-    background-image: url("../Banner-Sp-Bijoux.jpg");
+    background-image: url("../../assets/Banner-Sp-Bijoux.png");
 
     background-size: cover;
     background-position: center;
-
-    transform: scale(1.05);
+    background-repeat: no-repeat;
 
     z-index: 1;
 }
+
+/* ========================================
+   OVERLAY
+======================================== */
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    z-index: 2;
+}
+
+/* ========================================
+   CONTENIDO
+======================================== */
+
+.hero-content {
+    position: relative;
+
+    z-index: 3;
+
+    color: white;
+
+    text-align: center;
+
+    max-width: 900px;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 180px;
+}
+
+/* ========================================
+   TITULAR
+======================================== */
+
+.hero-content h1 {
+
+    font-size: clamp(42px, 7vw, 82px);
+
+    font-family: var(--ff-heading);
+
+    font-weight: 700;
+
+    line-height: 1.05;
+
+    margin-bottom: 20px;
+
+    color: white;
+
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
 /* ========================================
    TEXTO
 ======================================== */
 
-.hero-text {
-    flex: 1;
-    max-width: 520px;
+.hero-content p {
+
+    font-size: 1.15rem;
+
+    line-height: 1.7;
+
+    margin-bottom: 35px;
+
+    color: rgba(255, 255, 255, 0.92);
+
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
 }
 
-.hero-text h1 {
+/* ========================================
+   BOTÓN
+======================================== */
 
-    font-family: var(--ff-heading);
+.hero-content button {
 
-    font-size: clamp(42px, 6vw, 72px);
+    background: white;
 
-    line-height: 1.05;
-
-    margin-bottom: 24px;
-
-    color: var(--text);
-}
-
-.hero-text p {
-
-    font-size: 1.1rem;
-
-    color: var(--muted);
-
-    margin-bottom: 32px;
-
-    max-width: 520px;
-}
-
-.hero-text button {
-
-    background: var(--text);
-
-    color: white;
-
-    padding: 15px 34px;
-
-    border-radius: var(--radius-md);
+    color: black;
 
     border: none;
 
-    font-weight: 600;
+    padding: 16px 36px;
+
+    border-radius: 999px;
+
+    font-weight: 700;
 
     cursor: pointer;
 
-    transition: var(--transition);
-}
-
-.hero-text button:hover {
-
-    background: var(--accent);
-
-    transform: translateY(-3px);
+    transition: 0.3s ease;
 }
 
 /* ========================================
-   IMAGEN
+   HOVER
 ======================================== */
 
-.hero-image {
+.hero-content button:hover {
 
-     flex: 1;
-    min-width: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    transform: translateY(-3px) scale(1.03);
 
-.hero-image img {
-
-    width: 100%;
-
-    max-width: 620px;
-
-    height: auto;
-
-    object-fit: cover;
-
-    border-radius: var(--radius-lg);
-
-    box-shadow:
-        20px 20px 60px #e6daec,
-        -20px -20px 60px #ffffff;
-
-    animation: float 4s ease-in-out infinite;
-}
-
-/* ========================================
-   ANIMACIÓN
-======================================== */
-
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-16px);
-    }
+    background: #f3e7ff;
 }
 
 /* ========================================
@@ -146,98 +158,90 @@
 
     .hero {
 
-        flex-direction: column;
-
-        text-align: center;
-
-        gap: 40px;
-
-        padding: 60px 30px;
+        min-height: 70vh;
     }
 
-    .hero-text {
+    .hero-content {
 
-        max-width: 100%;
+        margin-top: 120px;
+
+        padding: 30px;
     }
 
-    .hero-text p {
+    .hero-content h1 {
 
-        margin-inline: auto;
+        font-size: clamp(38px, 8vw, 62px);
     }
 
-    .hero-image {
+    .hero-content p {
 
-        width: 100%;
-    }
-
-    .hero-image img {
-
-        max-width: 550px;
+        font-size: 1rem;
     }
 }
 
 /* ========================================
-   MÓVIL
+   MOBILE
 ======================================== */
 
 @media (max-width: 768px) {
 
     .hero {
 
-        padding: 45px 20px;
+        min-height: 65vh;
 
-        gap: 28px;
-
-        min-height: auto;
+        padding: 20px;
     }
 
-    .hero-text h1 {
+    .hero-content {
 
-        font-size: clamp(34px, 9vw, 48px);
+        margin-top: 80px;
     }
 
-    .hero-text p {
+    .hero-content h1 {
+
+        font-size: clamp(32px, 10vw, 48px);
+
+        line-height: 1.15;
+    }
+
+    .hero-content p {
 
         font-size: 15px;
+
+        line-height: 1.6;
     }
 
-    .hero-text button {
+    .hero-content button {
 
-        width: 100%;
-    }
+        width: auto;
 
-    .hero-image img {
-
-        width: 100%;
-
-        max-width: 100%;
-
-        border-radius: 24px;
+        padding: 14px 28px;
     }
 }
-/* EXTRA SMALL DEVICES */
+
+/* ========================================
+   EXTRA SMALL DEVICES
+======================================== */
 
 @media (max-width: 480px) {
 
     .hero {
 
-        padding: 35px 16px;
+        min-height: 60vh;
     }
 
-    .hero-text h1 {
+    .hero-content {
+
+        margin-top: 60px;
+    }
+
+    .hero-content h1 {
 
         font-size: 32px;
-
-        line-height: 1.15;
     }
 
-    .hero-text p {
+    .hero-content p {
 
         font-size: 14px;
-    }
-
-    .hero-image img {
-
-        border-radius: 18px;
     }
 }
