@@ -8,6 +8,8 @@ body {
 ======================================== */
 
 body {
+    margin: 0;
+    padding: 0;
     font-family: var(--ff-body);
     background: var(--bg);
     color: var(--text);
