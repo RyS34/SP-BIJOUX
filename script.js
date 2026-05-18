@@ -273,7 +273,7 @@ async function cargarProductos() {
         allProducts = [];
 
         if (!productContainer) return;
-        productContainer.innerHTML = "";
+
 
         snapshot.forEach((doc) => {
             const producto = doc.data();
@@ -308,8 +308,7 @@ async function cargarProductos() {
             const btn = card.querySelector(".add-to-cart-btn");
             btn.addEventListener("click", () => addToCart(producto));
 
-            // 5. render final
-            productContainer.appendChild(card);
+
         });
 
     } catch (error) {
@@ -520,7 +519,10 @@ function loadFiltersFromURL() {
     const params = new URLSearchParams(window.location.search);
 
     filters.query = params.get("search") || "";
-    filters.category = (params.get("category") || "all").toLowerCase().trim();
+    // SOLO aplicar si NO viene de página
+    if (!window.categoryPage) {
+        filters.category = (params.get("category") || "all").toLowerCase().trim();
+    }
     filters.minPrice = Number(params.get("min")) || 0;
     filters.maxPrice = Number(params.get("max")) || Infinity;
     filters.sort = params.get("sort") || "default";
@@ -555,9 +557,21 @@ function updateURL() {
 INICIALIZACIÓN
 ========================= */
 async function initApp() {
+
+    // 1. cargar datos
     await cargarProductos();
+
+    // 2. primero URL (pero NO pisar página)
     loadFiltersFromURL();
+
+    // 3. SI hay categoryPage, tiene prioridad absoluta
+    if (window.categoryPage) {
+        filters.category = window.categoryPage;
+    }
+
+    // 4. aplicar filtros YA con todo definido
     applyFilters();
+
     updateCartUI();
 }
 

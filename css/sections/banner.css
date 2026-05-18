@@ -60,7 +60,7 @@
 
 /* Descripción debajo del título */
 .banner-content p {
-    font-size: 1.1rem;
+    font-size: 1.40rem;
     margin-bottom: 30px;
     font-weight: 300;
 }
@@ -79,7 +79,61 @@
 /* Efecto hover para el botón */
 .btn-lujo:hover {
     background: var(--accent);
-    color: white;
+    color: rgb(174, 31, 160);
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(201, 160, 220, 0.4);
+}
+/* Estilos para la sección de productos destacados */
+.products {
+    padding-top: 70px;
+    text-align: center;
+}
+/* Título de la sección de productos */
+.products h2 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    
+}
+
+.category-hero {
+    height: 65vh;
+    background-image: url("../../assets/banner_aretes.png");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.category-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+}
+/* Contenido dentro del banner de categoría */
+.category-hero-content {
+    position: relative;
+    color: white;
+    max-width: 700px;
+    padding: 20px;
+    z-index: 1;
+
+}
+/* Título dentro del banner de categoría */
+.category-hero h1 {
+    font-size: 3rem;
+    font-family: 'Playfair Display', serif;
+}
+/* Botón dentro del banner de categoría */
+.category-hero button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background: white;
+    color: black;
+    cursor: pointer;
 }
