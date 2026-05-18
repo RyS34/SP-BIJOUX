@@ -1,7 +1,7 @@
 :root {
 
-    --bg: #f5edf2; /* Fondo general */
-    --accent: #cfb3db;/* Color de acento para enlaces y elementos interactivos */
+    --bg:#fffafc;; /* Fondo general */
+    --accent: #d2b3f6;/* Color de acento para enlaces y elementos interactivos */
     --muted: #694242;/* Color para texto secundario o menos importante */
     --text: #272525;/* Color para texto principal */
     --card-bg: #ffffff;/* Fondo para tarjetas o secciones destacadas */

@@ -1,32 +1,41 @@
 /* CONTENEDOR DEL BANNER */
 .new-collection {
-    padding: var(--gap-lg) var(--container-padding); /* Mantiene los márgenes laterales de tu web */
+    padding: var(--gap-lg) var(--container-padding);
+    /* Mantiene los márgenes laterales de tu web */
     background: var(--bg);
 }
-
+/* El contenedor del banner con la imagen de fondo */
 .banner-container {
     position: relative;
     width: 100%;
-    height: 500px; /* Altura fija para que no sea infinita */
-    border-radius: var(--radius-lg); /* Usa tus bordes redondeados */
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 75vh;
+    border-radius: var(--radius-lg);
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.banner-img {
+.banner-container::before {
+    content: "";
     position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 👈 Esto evita que la imagen se vea estirada o gigante */
+    inset: 0;
+    background-image: url("../../assets/banner_2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     z-index: 1;
 }
 
+/* Capa oscura sobre la imagen para mejorar la legibilidad del texto */
 .banner-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.25); /* Oscurece un poquito la foto */
+    background: rgba(0, 0, 0, 0.25);
+    /* Oscurece un poquito la foto */
     z-index: 2;
 }
 
@@ -39,22 +48,16 @@
     padding: 20px;
     max-width: 600px;
 }
-/* Etiqueta pequeña encima del título */
-.banner-content .tag {
-    font-size: 0.8rem;
-    letter-spacing: 3px;
-    font-weight: 600;
-    color: var(--accent); /* Tu lavanda favorito */
-    margin-bottom: 15px;
-    display: block;
-}
+
 /* Título grande sobre la imagen */
 .banner-content h2 {
-    font-family: var(--ff-heading); /* Playfair Display */
+    font-family: var(--ff-heading);
+    /* Playfair Display */
     font-size: 2.8rem;
     margin-bottom: 20px;
     line-height: 1.2;
 }
+
 /* Descripción debajo del título */
 .banner-content p {
     font-size: 1.1rem;
@@ -73,7 +76,7 @@
     cursor: pointer;
     transition: var(--transition);
 }
-
+/* Efecto hover para el botón */
 .btn-lujo:hover {
     background: var(--accent);
     color: white;
