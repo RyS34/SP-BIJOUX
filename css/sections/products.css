@@ -19,7 +19,7 @@
     height: 100%;
     transition: transform 0.2s ease;
     text-align: center;
-     
+
 }
 
 /* Efecto al pasar el mouse sobre la tarjeta de producto */
@@ -45,7 +45,7 @@
     object-position: center;
     display: block;
     transition: transform 0.3s ease;
-    }
+}
 
 .product-card:hover .product-img-wrapper img {
     transform: scale(1.05);
@@ -58,6 +58,11 @@
     margin-bottom: 8px;
     color: var(--text);
 }
+/* Efecto al pasar el mouse sobre el título del producto */
+.products {
+
+    padding: 50px 20px;
+}
 
 /* NOMBRE DEL PRODUCTO */
 .products h2 {
@@ -66,7 +71,22 @@
     text-align: center;
     margin-bottom: 20px;
     font-family: var(--ff-heading);
+
     transition: 0.4s ease;
+}
+
+/* Efecto al pasar el mouse sobre el título de productos */
+@media (max-width: 768px) {
+
+    .products {
+
+        padding: 25px 15px;
+    }
+
+    .products h2 {
+
+        margin-bottom: 15px;
+    }
 }
 
 /* Efecto al pasar el mouse sobre el título de productos */
@@ -114,7 +134,7 @@
     background: #ffffff;
     border-radius: 18px;
 
-    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
 
     align-items: center;
 }
@@ -127,7 +147,7 @@
     padding: 12px 14px;
     border-radius: 12px;
 
-    border: 1px solid rgba(0,0,0,0.08);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     background: #fafafa;
 
     font-size: 14px;
@@ -135,16 +155,19 @@
 
     transition: 0.2s ease;
 }
+
 .filters select:focus,
 .filters input:focus {
     border-color: #c9a0dc;
-    box-shadow: 0 0 0 4px rgba(201,160,220,0.2);
+    box-shadow: 0 0 0 4px rgba(201, 160, 220, 0.2);
     background: white;
 }
+
 .filters select:hover,
 .filters input:hover {
     transform: translateY(-2px);
 }
+
 /* MODAL DE IMAGEN AMPLIADA */
 /* =========================
    MODAL BASE
@@ -152,7 +175,7 @@
 .image-modal {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0, 0, 0, 0.85);
     display: flex;
     align-items: center;
     justify-content: center;

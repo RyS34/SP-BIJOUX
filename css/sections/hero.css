@@ -26,12 +26,12 @@
     left: 0;
     right: 0;
     bottom: 0;
-    
+
     background-image: url("../../assets/Banner-Sp-Bijoux.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-     transform: translateZ(0);
+    transform: translateZ(0);
     will-change: transform;
     z-index: 1;
 }
@@ -242,4 +242,36 @@
 
         font-size: 14px;
     }
+}
+
+/* ========================================
+   CLASES PERSONALIZADAS
+======================================== */
+
+.hero-btn {
+
+    display: inline-block;
+
+    margin-top: 25px;
+
+    padding: 14px 30px;
+
+    background: white;
+
+    color: black;
+
+    text-decoration: none;
+
+    border-radius: 999px;
+
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.hero-btn:hover {
+
+    transform: translateY(-3px);
+
+    background: #f3e7ff;
 }

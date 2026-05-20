@@ -1,0 +1,156 @@
+/* ========================================
+   CATEGORY HERO
+======================================== */
+
+.category-hero {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 60vh;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background-image: url("../../assets/aretes-banner.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+}
+
+/* ========================================
+   OVERLAY
+======================================== */
+
+.category-hero-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.35);
+}
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.category-hero-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    color: white;
+
+    max-width: 700px;
+
+    padding: 20px;
+}
+
+/* ========================================
+   TITLE
+======================================== */
+
+.category-hero-content h1 {
+
+    font-size: clamp(40px, 7vw, 72px);
+
+    font-family: var(--ff-heading);
+
+    margin-bottom: 20px;
+}
+
+/* ========================================
+   TEXT
+======================================== */
+
+.category-hero-content p {
+
+    font-size: 1.1rem;
+
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+}
+
+/* ========================================
+   BUTTON
+======================================== */
+
+.hero-btn {
+
+    display: inline-block;
+
+    padding: 14px 30px;
+
+    background: white;
+
+    color: black;
+
+    text-decoration: none;
+
+    border-radius: 999px;
+
+    font-weight: 600;
+
+    transition: 0.3s ease;
+}
+
+.hero-btn:hover {
+
+    transform: translateY(-3px);
+
+    background: #f3e7ff;
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+    .category-hero {
+
+        height: 42vh;
+    }
+
+    .category-hero-content {
+
+        padding: 10px 20px;
+    }
+
+    .category-hero-content h1 {
+
+        font-size: 42px;
+
+        margin-bottom: 10px;
+    }
+
+    .category-hero-content p {
+
+        font-size: 15px;
+
+        margin-bottom: 18px;
+
+        line-height: 1.5;
+    }
+
+    .hero-btn {
+
+        padding: 12px 24px;
+
+        font-size: 14px;
+    }
+}

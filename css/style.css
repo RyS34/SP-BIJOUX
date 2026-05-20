@@ -17,11 +17,13 @@
 ======================================== */
 
 @import url('./sections/hero.css');
+@import url('./sections/category-hero.css');
 @import url('./sections/categories.css');
 @import url('./sections/products.css');
 @import url('./sections/banner.css');
 @import url('./sections/contact.css');
 @import url('./sections/footer.css');
+
 
 /* ========================================
    COMPONENTS
