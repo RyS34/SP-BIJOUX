@@ -31,25 +31,13 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
     transform: translateZ(0);
     will-change: transform;
     z-index: 1;
 }
 
-/* ========================================
-   OVERLAY
-======================================== */
 
-.hero::after {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background: rgba(0, 0, 0, 0.35);
-
-    z-index: 2;
-}
 
 /* ========================================
    CONTENIDO

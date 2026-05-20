@@ -5,20 +5,17 @@
 .category-hero {
 
     position: relative;
-
     width: 100%;
-
     height: 60vh;
-
     overflow: hidden;
-
     display: flex;
-
     align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
+    justify-content: flex-start;
+    /* Alinea el contenido a la izquierda */
+    text-align: left;
+    /* Alinea el texto a la izquierda */
+    padding-left: 4%;
+    /* Agrega un poco de espacio a la izquierda */
 
     background-size: cover;
 
@@ -69,12 +66,7 @@
 ======================================== */
 
 .category-hero-overlay {
-
-    position: absolute;
-
-    inset: 0;
-
-    background: rgba(0, 0, 0, 0.35);
+    display: none;
 }
 
 /* ========================================
@@ -84,27 +76,20 @@
 .category-hero-content {
 
     position: relative;
-
     z-index: 2;
-
     color: white;
-
-    max-width: 700px;
-
+    max-width: 600px;
     padding: 20px;
 }
 
-/* ========================================
-   TITLE
-======================================== */
-
 .category-hero-content h1 {
 
-    font-size: clamp(40px, 7vw, 72px);
-
+    font-size: clamp(45px, 7vw, 90px);
+    /* Ajusta el tamaño del texto según el ancho de la pantalla*/
     font-family: var(--ff-heading);
-
     margin-bottom: 20px;
+    color: #000000;
+    text-shadow: 0 4px 25px rgba(0, 0, 0, 0.75);
 }
 
 /* ========================================
@@ -113,11 +98,15 @@
 
 .category-hero-content p {
 
-    font-size: 1.1rem;
-
-    line-height: 1.7;
-
+    font-size: 1.25rem;
+    line-height: 1.8;
     margin-bottom: 30px;
+
+    color: #111;
+
+    padding: 10px 15px;
+    border-radius: 10px;
+    display: inline-block
 }
 
 /* ========================================
@@ -153,39 +142,42 @@
 /* ========================================
    MOBILE
 ======================================== */
-
 @media (max-width: 768px) {
 
     .category-hero {
 
-        height: 42vh;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        text-align: center;
+        padding: 0 20px;
     }
 
     .category-hero-content {
 
-        padding: 10px 20px;
+        padding: 0;
+        max-width: 100%;
     }
 
     .category-hero-content h1 {
 
         font-size: 42px;
-
         margin-bottom: 10px;
     }
 
     .category-hero-content p {
 
         font-size: 15px;
-
         margin-bottom: 18px;
-
         line-height: 1.5;
     }
 
     .hero-btn {
 
         padding: 12px 24px;
-
         font-size: 14px;
+        max-width: 100%;
     }
 }
