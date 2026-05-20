@@ -20,14 +20,49 @@
 
     text-align: center;
 
-    background-image: url("../../assets/aretes-banner.jpg");
-
     background-size: cover;
 
     background-position: center;
 
     background-repeat: no-repeat;
 }
+
+/* ========================================
+   HERO ARETES
+======================================== */
+
+.category-hero-aretes {
+
+    background-image: url("../../assets/banner_aretes.png");
+}
+
+/* ========================================
+   HERO COLLARES
+======================================== */
+
+.category-hero-collares {
+
+    background-image: url("../../assets/banner_collares.png");
+}
+
+/* ========================================
+   HERO ANILLOS
+======================================== */
+
+.category-hero-anillos {
+
+    background-image: url("../../assets/banner_anillos.png");
+}
+
+/* ========================================
+   HERO PULSERAS
+======================================== */
+
+.category-hero-pulseras {
+
+    background-image: url("../../assets/banner_pulseras.png");
+}
+
 
 /* ========================================
    OVERLAY

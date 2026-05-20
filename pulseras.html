@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SP BIJOUX — Joyas y accesorios elegantes</title>
+    <title>Pulseras | SP BIJOUX</title>
 
     <meta name="description"
         content="SP BIJOUX — Joyas y accesorios elegantes. Descubre anillos, collares y pulseras con envío rápido.">
@@ -140,28 +140,24 @@
     <header class="header">
 
         <!-- LOGO -->
-        <a href="#inicio" class="logo" aria-label="SP BIJOUX - inicio">
+        <a href="index.html" class="logo" aria-label="SP BIJOUX - inicio">
 
             <img src="assets/logo_principal.png" alt="SP BIJOUX" width="180" height="40">
 
         </a>
 
         <!-- MENU DESKTOP -->
-        <nav class="menu" aria-label="Menú principal">
+        <nav class="menu">
 
-            <a href="#inicio">Inicio</a>
+            <a href="index.html">Inicio</a>
 
-            <a href="#colecciones">Colecciones</a>
+            <a href="anillos.html">Anillos</a>
 
-            <a href="#productos">Productos</a>
+            <a href="pulseras.html">Pulseras</a>
 
-            <a href="#nueva-coleccion">
-                Nueva colección
-            </a>
+            <a href="index.html#colecciones">Catálogo</a>
 
-            <a href="#" id="nav-contact-link">
-                Contacto
-            </a>
+            <a href="#" id="nav-contact-link">Contacto</a>
 
         </nav>
 
@@ -208,23 +204,23 @@
 
         <nav class="sidebar-nav">
 
-            <a href="#inicio" class="mobile-link">
+            <a href="index.html" class="mobile-link">
                 Inicio
             </a>
 
-            <a href="#colecciones" class="mobile-link">
+            <a href="index.html#colecciones" class="mobile-link">
                 Colecciones
             </a>
 
-            <a href="#productos" class="mobile-link">
+            <a href="aretes.html" class="mobile-link">
                 Productos
             </a>
 
-            <a href="#nueva-coleccion" class="mobile-link">
+            <a href="index.html#nueva-coleccion" class="mobile-link">
                 Nueva colección
             </a>
 
-            <a href="#" id="sidebar-contact-link">
+            <a href="#" id="sidebar-contact-link" class="mobile-link">
                 Contacto
             </a>
 
@@ -232,74 +228,22 @@
 
     </div>
 
-    <!-- ========================================
-         HERO
-    ========================================= -->
+    <section class="category-hero category-hero-pulseras">
 
-    <section id="inicio" class="hero">
+        <div class="category-hero-overlay"></div>
 
-        <div class="hero-content">
+        <div class="category-hero-content">
 
-            <h1>
-                Joyas que elevan tu estilo
-            </h1>
+            <h1>Pulseras</h1>
 
             <p>
-                Elegancia, delicadeza y accesorios modernos
-                para resaltar tu esencia.
+                Descubre nuestra colección de pulseras elegantes,
+                diseñadas para complementar tu estilo con delicadeza y sofisticación.
             </p>
 
-            <button>
-                Comprar ahora
-            </button>
-
-        </div>
-
-    </section>
-
-    <!-- ========================================
-         CATEGORÍAS
-    ========================================= -->
-
-    <section id="colecciones" class="categories">
-
-        <h2>Explora tu estilo</h2>
-
-        <div class="category-container">
-
-            <a href="aretes.html" class="category-card">
-                <div class="icon">✨</div>
-                <h3>Aretes</h3>
+            <a href="#productos" class="hero-btn">
+                Ver productos
             </a>
-
-            <a href="collares.html" class="category-card">
-                <div class="icon">💎</div>
-                <h3>Collares</h3>
-            </a>
-
-            <a href="anillos.html" class="category-card">
-                <div class="icon">💎</div>
-                <h3>Anillos</h3>
-            </a>
-
-            <a href="pulseras.html" class="category-card">
-                <div class="icon">💎</div>
-                <h3>Pulseras</h3>
-            </a>
-
-            <!-- Proximamente se utlizara estos categorias para destacar nuevas colecciones o accesorios especiales
-             <div class="category-card">
-                <div class="icon">💎</div>
-                <h3>Collares</h3>
-            <div class="category-card">
-                <div class="icon">👜</div>
-                <h3>Accesorios</h3>
-            </div>
-
-            <div class="category-card">
-                <div class="icon">🌸</div>
-                <h3>Nueva colección</h3>
-            </div>-->
 
         </div>
 
@@ -311,16 +255,8 @@
 
     <section id="productos" class="products">
 
-        <h2>Productos destacados</h2>
+        <h2>Colección de Pulseras</h2>
         <div class="filters">
-
-            <select id="categoryFilter">
-                <option value="all">Todas las categorías</option>
-                <option value="collares">Collares</option>
-                <option value="anillos">Anillos</option>
-                <option value="aretes">Aretes</option>
-                <option value="pulseras">Pulseras</option>
-            </select>
 
             <input type="number" id="minPrice" placeholder="Precio mínimo">
 
@@ -338,36 +274,7 @@
 
     </section>
 
-    <!-- ========================================
-     BANNER
-======================================== -->
 
-    <section id="nueva-coleccion" class="new-collection">
-
-        <div class="banner-container">
-
-            <div class="banner-overlay"></div>
-
-            <div class="banner-content">
-                <h2>
-                    Elegancia que resalta tu esencia
-                </h2>
-
-                <p>
-                    Descubre piezas únicas diseñadas para
-                    complementar tu estilo con sofisticación
-                    y delicadeza.
-                </p>
-
-                <button class="btn-lujo">
-                    Ver colección
-                </button>
-
-            </div>
-
-        </div>
-
-    </section>
 
     <!-- ========================================
          FOOTER
@@ -430,6 +337,10 @@
         <img id="modal-img" src="" alt="Producto ampliado">
     </div>
 
+    <script>
+        window.categoryPage = "pulseras";
+    
+    </script>
     <!-- JS -->
     <script type="module" src="script.js"></script>
 
