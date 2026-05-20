@@ -23,13 +23,9 @@
 .category-container {
 
     display: grid;
-
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-
+    grid-template-columns: repeat(4, 1fr);
     justify-content: center;
-
     gap: 60px;
-
     width: 100%;
 }
 
@@ -38,8 +34,8 @@
 
     position: relative;
     overflow: hidden;
-    width: 350px;
-    height: 300px;
+    width: 350px;/* Ajusta el ancho según tus necesidades */
+    height: 450px;/* Ajusta la altura según tus necesidades */
     margin: 0 auto;
     border-radius: var(--radius-md);
     cursor: pointer;
