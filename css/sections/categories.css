@@ -28,7 +28,7 @@
 
     justify-content: center;
 
-    gap: 50px;
+    gap: 60px;
 
     width: 100%;
 }
@@ -125,20 +125,20 @@
     .category-container {
 
         grid-template-columns: repeat(2, 1fr);
+
         gap: 25px;
-        padding: 0 20px;
     }
 
     .category-card {
 
         width: 100%;
 
-        max-width: 28px;
+        max-width: 320px;
 
-        height: 220px;
+        height: 240px;
     }
 }
-/* RESPONSIVE */
+
 @media (max-width: 768px) {
 
     .category-container {
