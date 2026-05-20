@@ -1,22 +1,114 @@
 /* SECCIÓN DE TESTIMONIOS */
 .footer {
     background: white;
+    height: auto;
     padding: var(--gap-lg) var(--container-padding);
     margin-top: var(--gap-lg);
     border-top: 1px solid #eee;
 }
+
+/* ========================================
+   DESKTOP */
 /* Contenedor del footer con diseño de grid para organizar el contenido */
 .footer-container {
     display: grid;
     grid-template-columns: 2fr repeat(3, 1fr);
     gap: 40px;
 }
+
+/* ========================================
+   MARCA - MOBILE / TABLET
+======================================== */
+
+@media (max-width: 768px) {
+
+    /* GRID FOOTER */
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        text-align: center;
+    }
+
+    /* BRAND OCUPA TODA LA FILA */
+    .footer-brand {
+        grid-column: 1 / -1;
+        margin-bottom: 15px;
+    }
+
+    /* LINKS: ICONO + TEXTO ALINEADO */
+    .footer-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 10px;
+
+        text-align: left;
+
+        padding: 6px 0;
+        border-radius: 6px;
+
+        transition: all 0.25s ease;
+        margin-bottom: 8px;
+    }
+
+    /* ICONOS */
+    .footer-links i {
+        font-size: 18px;
+
+        width: 30px;
+        height: 30px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.05);
+    }
+
+    /* HOVER GENERAL */
+    .footer-links a:hover {
+        transform: translateX(6px);
+        background: rgba(0, 0, 0, 0.04);
+    }
+
+    /* TÍTULOS */
+    .footer-links h3 {
+        color: #111;
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    /* COLORES HOVER (CORRECTO: nth-of-type) */
+    .footer-links a:nth-of-type(1):hover {
+        color: #E1306C;
+        /* Instagram */
+    }
+
+    .footer-links a:nth-of-type(2):hover {
+        color: #000000;
+        /* TikTok */
+    }
+
+    .footer-links a:nth-of-type(3):hover {
+        color: #1877F2;
+        /* Facebook */
+    }
+
+    .footer-links a:nth-of-type(4):hover {
+        color: #25D366;
+        /* WhatsApp */
+    }
+}
+
 /* Sección de la marca en el footer */
 .footer-brand h2 {
     font-family: var(--ff-heading);
     color: var(--accent);
     margin-bottom: 15px;
 }
+
 /* Enlaces del footer */
 .footer-links h3 {
     font-size: 1rem;
@@ -24,16 +116,24 @@
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+
 /* Estilo para los enlaces dentro del footer */
 .footer-links a {
     display: block;
     text-decoration: none;
     color: var(--muted);
-    margin-bottom: 10px;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
     transition: var(--transition);
 }
 
 .footer-links a:hover {
     color: var(--accent);
-    padding-left: 5px;
+}
+
+/* Agrega un pequeño desplazamiento a la izquierda al hacer hover en los enlaces del footer */
+@media (min-width: 769px) {
+    .footer-links a:hover {
+        padding-left: 5px;
+    }
 }

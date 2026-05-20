@@ -575,4 +575,7 @@ async function initApp() {
     updateCartUI();
 }
 
+/* =========================
+INICIAR APLICACIÓN
+========================= */    
 initApp();
