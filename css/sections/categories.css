@@ -25,7 +25,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-content: center;
-    gap: 60px;
+    gap: 30px;
     width: 100%;
 }
 
@@ -34,7 +34,7 @@
 
     position: relative;
     overflow: hidden;
-    width: 350px;/* Ajusta el ancho según tus necesidades */
+    width: 380px;/* Ajusta el ancho según tus necesidades */
     height: 450px;/* Ajusta la altura según tus necesidades */
     margin: 0 auto;
     border-radius: var(--radius-md);
