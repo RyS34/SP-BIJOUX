@@ -1,0 +1,351 @@
+/* ========================================
+   SHIPPING HERO
+======================================== */
+
+.shipping-hero {
+
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    padding: 60px var(--container-padding);
+
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.45)),
+        url('/assets/shipping-banner.png');
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    justify-content: center;
+    transform: translateY(20px);
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* ========================================
+   SHIPPING INFO
+======================================== */
+
+.shipping-info {
+
+    padding: 80px var(--container-padding);
+
+    background: #fff;
+}
+
+.shipping-container {
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+}
+
+.shipping-hero h1 {
+
+    font-size: clamp(50px, 8vw, 90px);
+    line-height: 1.2;
+    margin-bottom: 30px;
+    font-family: var(--ff-heading);
+
+}
+
+.shipping-hero p {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    text-decoration: line;
+
+}
+
+
+.shipping-container h2 {
+
+    text-align: center;
+    font-size: clamp(32px, 5vw, 52px);
+    font-family: var(--ff-heading);
+    margin-bottom: 50px;
+    color: #111;
+}
+
+.shipping-grid {
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+/* ========================================
+   SHIPPING CARD
+======================================== */
+
+.shipping-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: rgba(233, 228, 228, 0.9);
+
+    backdrop-filter: blur(10px);
+
+    padding: 35px;
+
+    border-radius: 28px;
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border 0.35s ease;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.shipping-card:hover {
+
+    transform: translateY(-10px);
+    border: 1px solid rgba(201, 160, 220, 0.4);
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* ========================================
+   SHIPPING CARD GLOW
+======================================== */
+
+.shipping-card::before {
+
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background:
+        radial-gradient(rgba(255, 255, 255, 0.35),
+            transparent 60%);
+
+    transform: rotate(25deg);
+    pointer-events: none;
+}
+
+.shipping-card h3 {
+
+    font-size: 1.4rem;
+
+    margin-bottom: 15px;
+
+    color: #000000;
+}
+
+.shipping-card p {
+
+    font-size: 1.05rem;
+    color: #343333;
+    line-height: 1.7;
+}
+
+/* ========================================
+   FAQ SECTION
+======================================== */
+
+.faq-section {
+
+    padding: 90px var(--container-padding);
+    background:
+        radial-gradient(rgba(255, 255, 255, 0.35),
+            transparent 60%);
+}
+
+.faq-container {
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+}
+
+.faq-container h2 {
+
+    text-align: center;
+
+    font-size: clamp(32px, 5vw, 52px);
+
+    font-family: var(--ff-heading);
+
+    margin-bottom: 50px;
+
+    color: #111;
+}
+
+.faq-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+}
+
+.faq-card {
+
+    background: #ececec;
+
+    padding: 35px;
+
+    border-radius: 24px;
+
+    border: 1px solid #e3bfe6;
+
+    transition: 0.3s ease;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.faq-card:hover {
+
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+.faq-card h3 {
+
+    font-size: 1.1rem;
+
+    margin-bottom: 15px;
+
+    color: #111;
+}
+
+.faq-card p {
+
+    color: #555;
+
+    line-height: 1.7;
+}
+
+/* ========================================
+   FAQ MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+    .faq-section {
+        padding: 60px 20px;
+    }
+
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .faq-card {
+        padding: 25px;
+        background: #fff4f8;
+    }
+
+    .faq-container h2 {
+        margin-bottom: 35px;
+    }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 768px) {
+
+    /* HERO */
+    .shipping-hero {
+
+        min-height: 85vh;
+        padding: 40px 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+
+    .shipping-hero .hero-content {
+
+        max-width: 100%;
+
+        width: 100%;
+
+        margin: 0 auto;
+
+        transform: translateY(0);
+    }
+
+
+    .shipping-hero h1 {
+
+        font-size: clamp(38px, 10vw, 58px);
+
+        line-height: 1.15;
+
+        margin-bottom: 20px;
+    }
+
+    .shipping-hero p {
+
+        font-size: 1rem;
+
+        line-height: 1.7;
+
+        margin-bottom: 30px;
+    }
+
+    /* INFO SECTION */
+    .shipping-info {
+
+        padding: 60px 20px;
+    }
+
+    .shipping-container h2 {
+
+        font-size: clamp(28px, 7vw, 42px);
+
+        margin-bottom: 35px;
+
+        text-align: center;
+    }
+
+    /* GRID */
+    .shipping-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    /* TARJETAS */
+    .shipping-card {
+
+        padding: 25px;
+
+        border-radius: 20px;
+    }
+
+    .shipping-card h3 {
+
+        font-size: 1.2rem;
+
+        margin-bottom: 12px;
+    }
+
+    .shipping-card p {
+
+        font-size: 0.98rem;
+
+        line-height: 1.7;
+    }
+}

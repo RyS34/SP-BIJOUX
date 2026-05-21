@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Collares | SP BIJOUX</title>
+    <title>Envíos | SP BIJOUX</title>
 
     <meta name="description"
-        content="SP BIJOUX — Joyas y accesorios elegantes. Descubre anillos, collares y pulseras con envío rápido.">
+        content="Conoce los métodos de envío de SP BIJOUX, tiempos de entrega y cobertura para tus pedidos en Perú.">
 
     <link rel="icon" href="assets/logo_principal.png" type="image/png">
 
@@ -24,6 +24,7 @@
     <meta property="og:title" content="SP BIJOUX">
     <meta property="og:description" content="Joyas y accesorios elegantes diseñados para resaltar tu estilo.">
 
+
     <meta property="og:image" content="https://i.postimg.cc/rFFhCMHM/Gemini-Generated-Image-o67d8po67d8po67d.png">
 
     <meta property="og:type" content="website">
@@ -36,11 +37,11 @@
 
     <!-- SCHEMA -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "SP BIJOUX",
-      "url": "http://localhost/"
+       {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "SP BIJOUX",
+    "url": "http://localhost/"
     }
     </script>
 </head>
@@ -150,15 +151,19 @@
         </a>
 
         <!-- MENU DESKTOP -->
-        <nav class="menu">
+        <nav class="menu" aria-label="Menú principal">
 
             <a href="index.html">Inicio</a>
 
-            <a href="collares.html">Collares</a>
+            <a href="index.html#colecciones">Colecciones</a>
 
-            <a href="index.html#colecciones">Catálogo</a>
+            <a href="index.html#productos">Productos</a>
 
-            <a href="#" id="nav-contact-link">Contacto</a>
+            <a href="index.html#nueva-coleccion">Nueva colección</a>
+
+            <a href="#" id="nav-contact-link">
+                Contacto
+            </a>
 
         </nav>
 
@@ -192,8 +197,8 @@
     </header>
 
     <!-- ========================================
-         SIDEBAR MOBILE
-    ========================================= -->
+     SIDEBAR MOBILE
+======================================== -->
 
     <div class="sidebar" id="sidebar" aria-hidden="true">
 
@@ -213,7 +218,7 @@
                 Colecciones
             </a>
 
-            <a href="aretes.html" class="mobile-link">
+            <a href="index.html#productos" class="mobile-link">
                 Productos
             </a>
 
@@ -221,7 +226,7 @@
                 Nueva colección
             </a>
 
-            <a href="#" id="sidebar-contact-link" class="mobile-link">
+            <a href="#" id="sidebar-contact-link">
                 Contacto
             </a>
 
@@ -229,51 +234,167 @@
 
     </div>
 
-    <section class="category-hero category-hero-collares">
+    <!-- ========================================
+         HERO
+    ========================================= -->
 
-        <div class="category-hero-overlay"></div>
+    <section id="inicio" class="shipping-hero">
 
-        <div class="category-hero-content">
+        <div class="hero-content">
 
-            <h1>Collares</h1>
+            <h1>
+                Envíos seguros y rápidos
+            </h1>
 
             <p>
-                Descubre nuestra colección de collares elegantes,
-                diseñados para complementar tu estilo con sofisticación.
+                Realizamos envíos a diferentes zonas del Perú
+                con atención rápida, segura y confiable para
+                que recibas tus accesorios sin complicaciones.
             </p>
 
-            <a href="#productos" class="hero-btn">
-                Ver productos
-            </a>
 
         </div>
 
     </section>
 
     <!-- ========================================
-         PRODUCTOS
-    ========================================= -->
+     INFORMACIÓN DE ENVÍOS
+======================================== -->
 
-    <section id="productos" class="products">
+    <section class="shipping-info">
 
-        <h2>Colección de Collares</h2>
-        <div class="filters">
+        <div class="shipping-container">
 
-            <input type="number" id="minPrice" placeholder="Precio mínimo">
+            <h2>Información de Envíos</h2>
 
-            <input type="number" id="maxPrice" placeholder="Precio máximo">
+            <div class="shipping-grid">
 
-            <select id="sortFilter">
-                <option value="default">Ordenar por</option>
-                <option value="low">Menor precio</option>
-                <option value="high">Mayor precio</option>
-            </select>
+                <div class="shipping-card">
+
+                    <h3>🚚 Cobertura</h3>
+
+                    <p>
+                        Realizamos envíos a Lima y provincias
+                        mediante servicios de delivery y
+                        agencias de transporte confiables.
+                    </p>
+
+                </div>
+
+                <div class="shipping-card">
+
+                    <h3>⏱ Tiempo de entrega</h3>
+
+                    <p>
+                        Los pedidos pueden tardar entre
+                        24 a 72 horas dependiendo de la
+                        ubicación del cliente.
+                    </p>
+
+                </div>
+
+                <div class="shipping-card">
+
+                    <h3>📦 Empaque seguro</h3>
+
+                    <p>
+                        Cada accesorio es cuidadosamente
+                        protegido para asegurar que llegue
+                        en perfectas condiciones.
+                    </p>
+
+                </div>
+
+                <div class="shipping-card">
+
+                    <h3>💬 Atención personalizada</h3>
+
+                    <p>
+                        Nuestro equipo está disponible para
+                        ayudarte durante todo el proceso
+                        de compra y envío.
+                    </p>
+
+                </div>
+
+            </div>
 
         </div>
 
-        <div class="product-container" id="product-container"> </div>
+    </section>
+
+    <!-- ========================================
+     FAQ
+======================================== -->
+
+    <section class="faq-section">
+
+        <div class="faq-container">
+
+            <h2>Preguntas Frecuentes</h2>
+
+            <div class="faq-grid">
+
+                <div class="faq-card">
+
+                    <h3>
+                        ¿Cuánto tarda el envío?
+                    </h3>
+
+                    <p>
+                        Los pedidos pueden demorar entre
+                        24 y 72 horas dependiendo de la
+                        ubicación del cliente.
+                    </p>
+
+                </div>
+
+                <div class="faq-card">
+
+                    <h3>
+                        ¿Realizan envíos a provincia?
+                    </h3>
+
+                    <p>
+                        Sí. Realizamos envíos a diferentes
+                        ciudades del Perú mediante agencias
+                        confiables.
+                    </p>
+
+                </div>
+
+                <div class="faq-card">
+
+                    <h3>
+                        ¿Cómo puedo rastrear mi pedido?
+                    </h3>
+
+                    <p>
+                        Nuestro equipo te enviará información
+                        y seguimiento apenas tu pedido sea despachado.
+                    </p>
+
+                </div>
+
+                <div class="faq-card">
+
+                    <h3>
+                        ¿Qué pasa si mi pedido llega dañado?
+                    </h3>
+
+                    <p>
+                        Contáctanos inmediatamente y te ayudaremos
+                        a solucionar cualquier inconveniente.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </section>
+
 
 
 
@@ -306,7 +427,6 @@
                 <a href="pulseras.html">Pulseras</a>
 
             </div>
-
 
             <div class="footer-links">
 
@@ -350,9 +470,6 @@
         <img id="modal-img" src="" alt="Producto ampliado">
     </div>
 
-    <script>
-        window.categoryPage = "collares";
-    </script>
     <!-- JS -->
     <script type="module" src="script.js"></script>
 
