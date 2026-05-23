@@ -1,19 +1,19 @@
 /* ========================================
    HEADER PRINCIPAL
 ======================================== */
-
 .header {
-    
+
     min-height: 90px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 20px;
     padding: 14px 30px;
-    position: fixed; /* Fija el header en la parte superior- si se desea mantener fijo- ("sticky" para movimiento) */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    box-sizing: border-box;
     z-index: 100;
     background: var(--bg);
 }
@@ -248,4 +248,15 @@
 
         font-size: 14px;
     }
+}
+
+/* ========================================
+   FIX HEADER OVERFLOW
+======================================== */
+
+.header *,
+.header *::before,
+.header *::after {
+
+    box-sizing: border-box;
 }

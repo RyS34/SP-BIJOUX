@@ -1,9 +1,13 @@
 /* DISEÑO DE PRODUCTOS BASADO EN TUS VARIABLES */
 #product-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 300px));
-    gap: 40px;
-    padding: 40px 0;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
     align-items: stretch;
     justify-content: center;
 
@@ -58,10 +62,19 @@
     margin-bottom: 8px;
     color: var(--text);
 }
+
 /* Efecto al pasar el mouse sobre el título del producto */
 .products {
 
-    padding: 50px 20px;
+    width: 100%;
+
+    max-width: 100%;
+
+    padding: 50px 0;
+
+    overflow-x: hidden;
+
+    box-sizing: border-box;
 }
 
 /* NOMBRE DEL PRODUCTO */
@@ -75,12 +88,12 @@
     transition: 0.4s ease;
 }
 
-/* Efecto al pasar el mouse sobre el título de productos */
+/* Efecto al pasar el mouse sobre el título de productos- MOVIL */
 @media (max-width: 768px) {
 
     .products {
 
-        padding: 25px 15px;
+        padding: 25px 0;
     }
 
     .products h2 {
@@ -215,4 +228,42 @@
     font-size: 30px;
     color: white;
     cursor: pointer;
+}
+
+/* ========================================
+   FIX RESPONSIVE PRODUCTS
+======================================== */
+
+@media (max-width: 768px) {
+
+    #product-container {
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .product-card {
+
+        width: 100%;
+
+        max-width: 100%;
+    }
+}
+
+/* ========================================
+   GLOBAL OVERFLOW FIX
+======================================== */
+
+html,
+body {
+
+    width: 100%;
+
+    overflow-x: hidden;
+}
+
+* {
+
+    box-sizing: border-box;
 }
