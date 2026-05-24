@@ -2,8 +2,7 @@
 #product-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 320px));/*para ver el tamaño minimo y maximo de la tarjeta*/
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
+ 
     gap: 20px;
     width: 100%;
     max-width: 100%;
@@ -19,21 +18,16 @@
 .product-card {
     background: var(--card-bg);
     border-radius: var(--radius-md);
-    padding: 13px;
-    max-width: 320px;
-    width: 100%;
     padding: 20px;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     height: auto;
-    max-width: 360px; /*sirve para controlar el tamaño de la tarjeta e imagen*/
-    width: 100%;
-    margin: 0 auto;
-
     transition: transform 0.2s ease;
     text-align: center;
 }
-
 /* Efecto al pasar el mouse sobre la tarjeta de producto */
 .product-card:hover {
     will-change: transform;
@@ -251,11 +245,9 @@
 
 html,
 body {
-
     width: 100%;
     overflow-x: hidden;
 }
-
 * {
     box-sizing: border-box;
 }
