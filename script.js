@@ -319,19 +319,65 @@ async function cargarProductos() {
 /* =========================
    BUSCADOR
 ========================= */
-searchInput?.addEventListener("input", () => {
+searchInput?.addEventListener("keydown", (e) => {
 
-    clearTimeout(searchTimeout);
+    if (e.key !== "Enter") return;
 
-    searchTimeout = setTimeout(() => {
+    const query = searchInput.value
+        .toLowerCase()
+        .trim();
 
-        filters.query = searchInput.value.toLowerCase().trim();
+    filters.query = query;
 
-        applyFilters();
+    /* =========================
+       REDIRECCIÓN INTELIGENTE
+    ========================= */
 
-    }, 300);
+    const redirects = {
+
+        collares: ["collar", "collares", "cadena", "cadenas"],
+
+        anillos: ["anillo", "anillos"],
+
+        pulseras: ["pulsera", "pulseras"],
+
+        aretes: ["arete", "aretes", "aro", "aros"]
+    };
+
+    for (const page in redirects) {
+
+        const keywords = redirects[page];
+
+        const match = keywords.some(word =>
+            query.includes(word)
+        );
+
+        if (match) {
+
+            window.location.href =
+                `${page}.html?search=${query}`;
+
+            return;
+        }
+    }
+
+    /* búsqueda normal */
+    applyFilters();
+
+    const productsSection =
+        document.getElementById("productos");
+
+    if (productsSection && query.length > 0) {
+
+        productsSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
 
 });
+
 
 function highlightText(text, query) {
     if (!query) return text;
@@ -345,14 +391,31 @@ function applyFilters() {
 
     let results = [...allProducts];
 
-    // 🔎 BUSCADOR
+    //* 🔎 BUSCADOR INTELIGENTE */
     if (filters.query) {
-        results = results.filter(p =>
-            (p.nombre || "").toLowerCase()
-                .includes(filters.query)
-        );
-    }
 
+        results = results.filter(p => {
+
+            const nombre = (p.nombre || "")
+                .toLowerCase()
+                .trim();
+
+            let query = filters.query
+                .toLowerCase()
+                .trim();
+
+            /* quitar plural simple */
+            if (query.endsWith("es")) {
+                query = query.slice(0, -2);
+            } else if (query.endsWith("s")) {
+                query = query.slice(0, -1);
+            }
+
+            return nombre.includes(query);
+
+        });
+
+    }
     // 🏷️ CATEGORÍA
     if (filters.category !== "all") {
         results = results.filter(p => {
@@ -601,5 +664,5 @@ if (heroVideo && heroContent) {
 }
 /* =========================
 INICIAR APLICACIÓN
-========================= */    
+========================= */
 initApp();

@@ -56,15 +56,17 @@
     align-items: center;
     justify-content: center;
     margin-top: 150px;
-
+}
+.hero-animated {
     opacity: 0;
     transform: translateY(30px);
+
     transition:
         opacity 1.2s ease,
         transform 1.2s ease;
 }
 
-.hero-content.show {
+.hero-animated.show {
     opacity: 1;
     transform: translateY(0);
 }
