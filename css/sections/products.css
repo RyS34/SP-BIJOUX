@@ -2,7 +2,7 @@
 #product-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 320px));/*para ver el tamaño minimo y maximo de la tarjeta*/
- 
+
     gap: 20px;
     width: 100%;
     max-width: 100%;
