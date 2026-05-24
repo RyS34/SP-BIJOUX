@@ -575,6 +575,30 @@ async function initApp() {
     updateCartUI();
 }
 
+/* ========================================
+   HERO VIDEO END
+======================================== */
+
+const heroVideo = document.getElementById("hero-video");
+const heroContent = document.querySelector(".hero-content");
+
+if (heroVideo && heroContent) {
+
+    heroVideo.addEventListener("ended", () => {
+
+        /* ocultar video suavemente */
+        heroVideo.style.opacity = "0";
+
+        /* mostrar contenido */
+        setTimeout(() => {
+
+            heroContent.classList.add("show");
+
+        }, 400);
+
+    });
+
+}
 /* =========================
 INICIAR APLICACIÓN
 ========================= */    
