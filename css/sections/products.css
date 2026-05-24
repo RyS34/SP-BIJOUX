@@ -1,7 +1,7 @@
 /* DISEÑO DE PRODUCTOS BASADO EN TUS VARIABLES */
 #product-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     width: 100%;
     max-width: 100%;
@@ -17,13 +17,16 @@
 .product-card {
     background: var(--card-bg);
     border-radius: var(--radius-md);
-    padding: 13px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: auto;
+    max-width: 360px; /*sirve para controlar el tamaño de la tarjeta e imagen*/
+    width: 100%;
+    margin: 0 auto;
+
     transition: transform 0.2s ease;
     text-align: center;
-
 }
 
 /* Efecto al pasar el mouse sobre la tarjeta de producto */
@@ -35,7 +38,7 @@
 /* IMAGEN DEL PRODUCTO */
 .product-img-wrapper {
     width: 100%;
-    height: 220px;
+    height: 300px; /*Altura del cntenedor(rectangulo) de la imagen*/
     overflow: hidden;
     border-radius: var(--radius-md);
     background: #f5f5f5;
@@ -59,7 +62,7 @@
 .product-card h3 {
     font-family: var(--ff-heading);
     font-size: 1.1rem;
-    margin-bottom: 8px;
+    margin-bottom: 9px;
     color: var(--text);
 }
 
@@ -67,11 +70,8 @@
 .products {
 
     width: 100%;
-
     max-width: 100%;
-
     padding: 50px 0;
-
     overflow-x: hidden;
 
     box-sizing: border-box;
@@ -92,12 +92,9 @@
 @media (max-width: 768px) {
 
     .products {
-
         padding: 25px 0;
     }
-
     .products h2 {
-
         margin-bottom: 15px;
     }
 }
@@ -140,15 +137,11 @@
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-
     padding: 18px;
     margin-bottom: 25px;
-
     background: #ffffff;
     border-radius: 18px;
-
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-
     align-items: center;
 }
 
@@ -156,16 +149,12 @@
 .filters input {
     flex: 1;
     min-width: 180px;
-
     padding: 12px 14px;
     border-radius: 12px;
-
     border: 1px solid rgba(0, 0, 0, 0.08);
     background: #fafafa;
-
     font-size: 14px;
     outline: none;
-
     transition: 0.2s ease;
 }
 
@@ -208,8 +197,8 @@
 
 /* IMAGEN */
 .image-modal img {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 100%;
+    max-height: 100%;
     cursor: zoom-in;
     transform: scale(0.7);
     transition: 0.25s ease;
@@ -259,11 +248,9 @@ html,
 body {
 
     width: 100%;
-
     overflow-x: hidden;
 }
 
 * {
-
     box-sizing: border-box;
 }

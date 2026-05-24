@@ -574,7 +574,23 @@ async function initApp() {
 
     updateCartUI();
 }
+/* ========================================
+   HERO VIDEO END
+======================================== */
 
+const heroVideo = document.getElementById("hero-video");
+
+if (heroVideo) {
+
+    heroVideo.addEventListener("ended", () => {
+
+        heroVideo.pause();
+
+        heroVideo.style.opacity = "0";
+
+    });
+
+}
 /* =========================
 INICIAR APLICACIÓN
 ========================= */    
