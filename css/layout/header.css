@@ -77,11 +77,122 @@
 }
 
 /* ========================================
+   SEARCH BOX
+======================================== */
+
+.search-box {
+
+    position: relative;
+
+    width: 260px;
+
+    flex-shrink: 0;
+}
+
+/* INPUT BUSCADOR */
+
+.search-box input {
+
+    width: 100%;
+
+    display: block;
+}
+
+/* ========================================
+   SUGERENCIAS BUSCADOR
+======================================== */
+
+.search-suggestions {
+
+    position: absolute;
+
+    top: 110%;
+    left: 0;
+
+    width: 100%;
+
+    background: white;
+
+    border-radius: 16px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    overflow: hidden;
+
+    z-index: 999;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(-10px);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s;
+}
+
+/* ACTIVO */
+
+.search-suggestions.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+}
+
+/* ITEM */
+
+.suggestion-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 12px 14px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+    border-bottom: 1px solid #f1f1f1;
+
+    background: white;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+}
+
+/* ÚLTIMO ITEM */
+
+.suggestion-item:last-child {
+
+    border-bottom: none;
+}
+
+/* HOVER */
+
+.suggestion-item:hover {
+
+    background: #f7edf9;
+
+    padding-left: 24px;
+}
+
+/* ========================================
    SEARCH INPUT
 ======================================== */
 
 #search-input {
-    width: 230px;
+
+    width: 100%;
 
     padding: 12px 16px;
 
@@ -158,10 +269,6 @@
         gap: 18px;
     }
 
-    #search-input {
-        width: 180px;
-    }
-
     .logo img {
         height: 80px;
     }
@@ -189,18 +296,12 @@
     }
 
     .header-actions {
-        width: 100%;
 
         display: flex;
-        justify-content: space-between;
+
         align-items: center;
 
         gap: 12px;
-    }
-
-    #search-input {
-        width: 140px;
-        min-width: 0;
     }
 
     .icons {
@@ -218,6 +319,10 @@
         align-items: center;
         justify-content: center;
     }
+
+    .search-box {
+        width: 170px;
+    }
 }
 
 /* ========================================
@@ -234,18 +339,14 @@
         height: 65px;
     }
 
-    #search-input {
-        width: 120px;
-
-        padding: 10px 14px;
-
-        font-size: 13px;
+    .search-box {
+        width: 140px;
     }
 
     .icons button {
         width: 38px;
         height: 38px;
-
+        
         font-size: 14px;
     }
 }

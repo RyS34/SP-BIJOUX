@@ -48,6 +48,8 @@ const cartItemsContainer = document.getElementById("cart-items");
 const cartTotal = document.getElementById("cart-total");
 const cartCount = document.getElementById("cart-count");
 const searchInput = document.getElementById("search-input");
+const suggestionsBox =
+    document.getElementById("search-suggestions");
 let searchTimeout;
 const productContainer = document.getElementById("product-container");
 const imageModal = document.getElementById("image-modal");
@@ -270,45 +272,17 @@ window.removeFromCart = function (index) {
 async function cargarProductos() {
     try {
         const snapshot = await getDocs(collection(db, "productos"));
+
         allProducts = [];
-
-        if (!productContainer) return;
-
 
         snapshot.forEach((doc) => {
             const producto = doc.data();
-            // NORMALIZAR categoría (CLAVE)
-            producto.categoria = (producto.categoria || "").toLowerCase().trim();
-            console.log("CATEGORÍA:", producto.categoria);
 
-            // 1. guardar primero
+            producto.categoria = (producto.categoria || "")
+                .toLowerCase()
+                .trim();
+
             allProducts.push(producto);
-
-            // 2. crear elemento
-            const card = document.createElement("div");
-            card.classList.add("product-card");
-
-            // 3. estructura visual
-            card.innerHTML = `
-            <div class="product-img-wrapper">
-            <img src="${producto.imagen}" alt="${producto.nombre}">
-            </div>
-
-            <div class="product-details">
-             <h3>${producto.nombre}</h3>
-             <p class="price">S/ ${Number(producto.precio).toFixed(2)}</p>
-
-            <button class="add-to-cart-btn">
-            🛒 Agregar
-        </button>
-    </div>
-`;
-
-            // 4. eventos separados (más limpio)
-            const btn = card.querySelector(".add-to-cart-btn");
-            btn.addEventListener("click", () => addToCart(producto));
-
-
         });
 
     } catch (error) {
@@ -362,8 +336,9 @@ searchInput?.addEventListener("keydown", (e) => {
     }
 
     /* búsqueda normal */
-    applyFilters();
-
+    requestAnimationFrame(() => {
+        applyFilters();
+    });
     const productsSection =
         document.getElementById("productos");
 
@@ -377,7 +352,191 @@ searchInput?.addEventListener("keydown", (e) => {
     }
 
 });
+/* =========================
+   BÚSQUEDA EN TIEMPO REAL
+========================= */
 
+searchInput?.addEventListener("input", () => {
+
+    clearTimeout(searchTimeout);
+
+    searchTimeout = setTimeout(() => {
+
+        const query = searchInput.value
+            .toLowerCase()
+            .trim();
+
+        filters.query = query;
+
+        /* mostrar sugerencias */
+        showSuggestions(query);
+     
+    }, 200);
+
+});
+
+/* =========================
+   CERRAR SUGERENCIAS
+========================= */
+
+document.addEventListener("click", (e) => {
+
+    const searchBox =
+        document.querySelector(".search-box");
+
+    if (!searchBox.contains(e.target)) {
+
+        suggestionsBox.classList.remove("active");
+    }
+});
+
+/* =========================
+   SUGERENCIAS AUTOMÁTICAS
+========================= */
+
+function showSuggestions(query) {
+
+    if (!query) {
+
+        suggestionsBox.innerHTML = "";
+
+        suggestionsBox.classList.remove("active");
+
+        return;
+    }
+
+    suggestionsBox.innerHTML = "";
+
+    /* filtrar productos */
+    const normalizedQuery = query
+        .toLowerCase()
+        .trim()
+        .replaceAll("á", "a")
+        .replaceAll("é", "e")
+        .replaceAll("í", "i")
+        .replaceAll("ó", "o")
+        .replaceAll("ú", "u");
+
+    /* quitar plural */
+    const smartQuery = normalizedQuery
+        .replace(/es$/i, "")
+        .replace(/s$/i, "");
+
+    const results = allProducts.filter(producto => {
+
+        const nombre = (producto.nombre || "")
+            .toLowerCase()
+            .trim()
+            .replaceAll("á", "a")
+            .replaceAll("é", "e")
+            .replaceAll("í", "i")
+            .replaceAll("ó", "o")
+            .replaceAll("ú", "u");
+
+        return (
+
+            nombre.includes(normalizedQuery) ||
+
+            nombre.includes(smartQuery) ||
+
+            smartQuery.includes(nombre.slice(0, 4))
+
+        );
+
+    });
+
+    /* limitar resultados */
+    const limitedResults = results.slice(0, 5);
+
+    /* no hay resultados */
+    if (limitedResults.length === 0) {
+
+        suggestionsBox.classList.remove("active");
+
+        return;
+    }
+
+    /* crear items */
+    limitedResults.forEach(producto => {
+
+        const item = document.createElement("div");
+
+        item.classList.add("suggestion-item");
+
+        item.innerHTML = `
+    <img 
+        src="${producto.imagen}" 
+        alt="${producto.nombre}"
+        class="suggestion-img"
+    >
+
+    <div class="suggestion-info">
+
+        <span class="suggestion-name">
+            ${producto.nombre}
+        </span>
+
+        <span class="suggestion-price">
+            S/ ${Number(producto.precio).toFixed(2)}
+        </span>
+
+    </div>
+`;
+
+        /* click */
+        item.addEventListener("click", () => {
+
+            searchInput.value = producto.nombre;
+
+            filters.query = producto.nombre;
+
+            applyFilters();
+
+            suggestionsBox.classList.remove("active");
+
+            const productsSection =
+                document.getElementById("productos");
+
+            productsSection?.scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+
+        suggestionsBox.appendChild(item);
+    });
+
+    /* mostrar */
+    suggestionsBox.classList.add("active");
+}
+/* =========================
+   CERRAR SUGERENCIAS
+========================= */
+
+/* click fuera */
+
+document.addEventListener("click", (e) => {
+
+    const clickedInside =
+        e.target.closest(".search-box");
+
+    if (!clickedInside) {
+
+        suggestionsBox?.classList.remove("active");
+    }
+
+});
+
+/* tecla escape */
+
+document.addEventListener("keydown", (e) => {
+
+    if (e.key === "Escape") {
+
+        suggestionsBox?.classList.remove("active");
+
+    }
+
+});
 
 function highlightText(text, query) {
     if (!query) return text;
@@ -394,24 +553,40 @@ function applyFilters() {
     //* 🔎 BUSCADOR INTELIGENTE */
     if (filters.query) {
 
+        const normalizedQuery = filters.query
+            .toLowerCase()
+            .trim()
+            .replaceAll("á", "a")
+            .replaceAll("é", "e")
+            .replaceAll("í", "i")
+            .replaceAll("ó", "o")
+            .replaceAll("ú", "u");
+
+        /* singular inteligente */
+        const smartQuery = normalizedQuery
+            .replace(/es$/i, "")
+            .replace(/s$/i, "");
+
         results = results.filter(p => {
 
             const nombre = (p.nombre || "")
                 .toLowerCase()
-                .trim();
+                .trim()
+                .replaceAll("á", "a")
+                .replaceAll("é", "e")
+                .replaceAll("í", "i")
+                .replaceAll("ó", "o")
+                .replaceAll("ú", "u");
 
-            let query = filters.query
-                .toLowerCase()
-                .trim();
+            return (
 
-            /* quitar plural simple */
-            if (query.endsWith("es")) {
-                query = query.slice(0, -2);
-            } else if (query.endsWith("s")) {
-                query = query.slice(0, -1);
-            }
+                nombre.includes(normalizedQuery) ||
 
-            return nombre.includes(query);
+                nombre.includes(smartQuery) ||
+
+                smartQuery.includes(nombre.slice(0, 4))
+
+            );
 
         });
 
