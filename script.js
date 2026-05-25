@@ -376,21 +376,6 @@ searchInput?.addEventListener("input", () => {
 });
 
 /* =========================
-   CERRAR SUGERENCIAS
-========================= */
-
-document.addEventListener("click", (e) => {
-
-    const searchBox =
-        document.querySelector(".search-box");
-
-    if (!searchBox.contains(e.target)) {
-
-        suggestionsBox.classList.remove("active");
-    }
-});
-
-/* =========================
    SUGERENCIAS AUTOMÁTICAS
 ========================= */
 
