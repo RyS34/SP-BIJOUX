@@ -48,6 +48,7 @@ const cartItemsContainer = document.getElementById("cart-items");
 const cartTotal = document.getElementById("cart-total");
 const cartCount = document.getElementById("cart-count");
 const searchInput = document.getElementById("search-input");
+const suggestionsBox = document.querySelector(".search-suggestions");
 let searchTimeout;
 const productContainer = document.getElementById("product-container");
 const imageModal = document.getElementById("image-modal");
@@ -270,45 +271,17 @@ window.removeFromCart = function (index) {
 async function cargarProductos() {
     try {
         const snapshot = await getDocs(collection(db, "productos"));
+
         allProducts = [];
-
-        if (!productContainer) return;
-
 
         snapshot.forEach((doc) => {
             const producto = doc.data();
-            // NORMALIZAR categoría (CLAVE)
-            producto.categoria = (producto.categoria || "").toLowerCase().trim();
-            console.log("CATEGORÍA:", producto.categoria);
 
-            // 1. guardar primero
+            producto.categoria = (producto.categoria || "")
+                .toLowerCase()
+                .trim();
+
             allProducts.push(producto);
-
-            // 2. crear elemento
-            const card = document.createElement("div");
-            card.classList.add("product-card");
-
-            // 3. estructura visual
-            card.innerHTML = `
-            <div class="product-img-wrapper">
-            <img src="${producto.imagen}" alt="${producto.nombre}">
-            </div>
-
-            <div class="product-details">
-             <h3>${producto.nombre}</h3>
-             <p class="price">S/ ${Number(producto.precio).toFixed(2)}</p>
-
-            <button class="add-to-cart-btn">
-            🛒 Agregar
-        </button>
-    </div>
-`;
-
-            // 4. eventos separados (más limpio)
-            const btn = card.querySelector(".add-to-cart-btn");
-            btn.addEventListener("click", () => addToCart(producto));
-
-
         });
 
     } catch (error) {
@@ -319,19 +292,201 @@ async function cargarProductos() {
 /* =========================
    BUSCADOR
 ========================= */
+searchInput?.addEventListener("keydown", (e) => {
+
+    if (e.key !== "Enter") return;
+
+    const query = searchInput.value
+        .toLowerCase()
+        .trim();
+
+    filters.query = query;
+
+    /* =========================
+       REDIRECCIÓN INTELIGENTE
+    ========================= */
+
+    const redirects = {
+
+        collares: ["collar", "collares", "cadena", "cadenas"],
+
+        anillos: ["anillo", "anillos"],
+
+        pulseras: ["pulsera", "pulseras"],
+
+        aretes: ["arete", "aretes", "aro", "aros"]
+    };
+
+    for (const page in redirects) {
+
+        const keywords = redirects[page];
+
+        const match = keywords.some(word =>
+            query.includes(word)
+        );
+
+        if (match) {
+
+            window.location.href = `${page}.html?search=${query}`;
+
+            return;
+        }
+    }
+
+    /* búsqueda normal */
+    requestAnimationFrame(() => {
+        applyFilters();
+    });
+    const productsSection =
+        document.getElementById("productos");
+
+    if (productsSection && query.length > 0) {
+
+        productsSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+
+});
+/* =========================
+   BÚSQUEDA EN TIEMPO REAL
+========================= */
 searchInput?.addEventListener("input", () => {
 
     clearTimeout(searchTimeout);
 
     searchTimeout = setTimeout(() => {
 
-        filters.query = searchInput.value.toLowerCase().trim();
+        const query = searchInput.value
+            .toLowerCase()
+            .trim();
 
-        applyFilters();
+        filters.query = query;
 
-    }, 300);
+        showSuggestions(query);
+
+    }, 150);
 
 });
+
+searchInput?.addEventListener("focus", () => {
+
+    if (searchInput.value.trim().length >= 2) {
+        showSuggestions(searchInput.value.trim());
+    }
+
+});
+
+/* =========================
+   SUGERENCIAS AUTOMÁTICAS
+========================= */
+
+function showSuggestions(query) {
+
+    if (!suggestionsBox) return;
+
+    if (!allProducts || allProducts.length === 0) return;
+
+    if (!query || query.length < 2) {
+        suggestionsBox.innerHTML = "";
+        suggestionsBox.classList.remove("active");
+        return;
+    }
+
+    suggestionsBox.innerHTML = "";
+
+    const normalizedQuery = query
+        .toLowerCase()
+        .trim()
+        .replaceAll("á", "a")
+        .replaceAll("é", "e")
+        .replaceAll("í", "i")
+        .replaceAll("ó", "o")
+        .replaceAll("ú", "u");
+
+    const smartQuery = normalizedQuery
+        .replace(/es$/i, "")
+        .replace(/s$/i, "");
+
+    const results = allProducts.filter(producto => {
+
+        const nombre = (producto.nombre || "")
+            .toLowerCase()
+            .trim()
+            .replaceAll("á", "a")
+            .replaceAll("é", "e")
+            .replaceAll("í", "i")
+            .replaceAll("ó", "o")
+            .replaceAll("ú", "u");
+
+        return (
+            nombre.includes(normalizedQuery) ||
+            nombre.includes(smartQuery) ||
+            smartQuery.includes(nombre.slice(0, 4))
+        );
+    });
+
+    const limitedResults = results.slice(0, 5);
+
+    if (limitedResults.length === 0) {
+        suggestionsBox.classList.remove("active");
+        return;
+    }
+
+    limitedResults.forEach(producto => {
+
+        const item = document.createElement("div");
+        item.classList.add("suggestion-item");
+
+        item.innerHTML = `
+            <img src="${producto.imagen}" alt="${producto.nombre}" class="suggestion-img">
+
+            <div class="suggestion-info">
+                <span class="suggestion-name">${producto.nombre}</span>
+                <span class="suggestion-price">S/ ${Number(producto.precio).toFixed(2)}</span>
+            </div>
+        `;
+
+        item.addEventListener("click", () => {
+
+            searchInput.value = producto.nombre;
+            filters.query = producto.nombre;
+
+            applyFilters();
+
+            suggestionsBox.classList.remove("active");
+
+            document.getElementById("productos")
+                ?.scrollIntoView({ behavior: "smooth" });
+        });
+
+        suggestionsBox.appendChild(item);
+    });
+
+    suggestionsBox.classList.add("active");
+}
+
+
+/* =========================
+   CERRAR SUGERENCIAS
+========================= */
+
+document.addEventListener("click", (e) => {
+
+    if (!e.target.closest(".search-box")) {
+        suggestionsBox?.classList.remove("active");
+    }
+});
+
+document.addEventListener("keydown", (e) => {
+
+    if (e.key === "Escape") {
+        suggestionsBox?.classList.remove("active");
+    }
+});
+
 
 function highlightText(text, query) {
     if (!query) return text;
@@ -345,14 +500,47 @@ function applyFilters() {
 
     let results = [...allProducts];
 
-    // 🔎 BUSCADOR
+    //* 🔎 BUSCADOR INTELIGENTE */
     if (filters.query) {
-        results = results.filter(p =>
-            (p.nombre || "").toLowerCase()
-                .includes(filters.query)
-        );
-    }
 
+        const normalizedQuery = filters.query
+            .toLowerCase()
+            .trim()
+            .replaceAll("á", "a")
+            .replaceAll("é", "e")
+            .replaceAll("í", "i")
+            .replaceAll("ó", "o")
+            .replaceAll("ú", "u");
+
+        /* singular inteligente */
+        const smartQuery = normalizedQuery
+            .replace(/es$/i, "")
+            .replace(/s$/i, "");
+
+        results = results.filter(p => {
+
+            const nombre = (p.nombre || "")
+                .toLowerCase()
+                .trim()
+                .replaceAll("á", "a")
+                .replaceAll("é", "e")
+                .replaceAll("í", "i")
+                .replaceAll("ó", "o")
+                .replaceAll("ú", "u");
+
+            return (
+
+                nombre.includes(normalizedQuery) ||
+
+                nombre.includes(smartQuery) ||
+
+                smartQuery.includes(nombre.slice(0, 4))
+
+            );
+
+        });
+
+    }
     // 🏷️ CATEGORÍA
     if (filters.category !== "all") {
         results = results.filter(p => {
@@ -601,5 +789,5 @@ if (heroVideo && heroContent) {
 }
 /* =========================
 INICIAR APLICACIÓN
-========================= */    
+========================= */
 initApp();
