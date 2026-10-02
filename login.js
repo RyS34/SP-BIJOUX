@@ -3,7 +3,10 @@ console.log("LOGIN JS CARGADO ✔");
 import { auth, db } from "./firebase.js";
 
 import {
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword,
+    setPersistence,
+    browserLocalPersistence,
+    browserSessionPersistence
 } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
 import {
@@ -19,6 +22,7 @@ window.login = async function (event) {
 
     const email = document.getElementById("user").value.trim();
     const password = document.getElementById("pass").value;
+    const rememberUser = document.getElementById("remember-user").checked;
     const error = document.getElementById("error");
 
     error.textContent = "";
@@ -28,6 +32,10 @@ window.login = async function (event) {
         console.log("Intentando login con:", email);
 
         // 🔐 LOGIN FIREBASE AUTH
+        await setPersistence(
+            auth,
+            rememberUser ? browserLocalPersistence : browserSessionPersistence
+        );
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
 
         const user = userCredential.user;

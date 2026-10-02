@@ -166,9 +166,9 @@
 
         .dashboard {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 22px;
-            margin-bottom: 35px;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 18px;
+            margin-bottom: 22px;
         }
 
         .card {
@@ -207,6 +207,345 @@
             font-weight: 700;
         }
 
+        .card-caption {
+            display: block;
+            margin-top: 7px;
+            color: #827b86;
+            font-size: 12px;
+        }
+
+        .dashboard-insights {
+            display: grid;
+            grid-template-columns: minmax(0, 1.45fr) minmax(270px, 0.8fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .insight-panel {
+            min-width: 0;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.055);
+        }
+
+        .insight-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .insight-heading h2 {
+            color: #302a35;
+            font-size: 18px;
+        }
+
+        .insight-eyebrow {
+            margin-bottom: 4px;
+            color: #8b718f;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .insight-total {
+            color: #553c61;
+            font-size: 17px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .chart-caption {
+            margin: -10px 0 14px;
+            color: #827b86;
+            font-size: 12px;
+        }
+
+        .revenue-chart {
+            display: grid;
+            grid-template-columns: repeat(7, minmax(0, 1fr));
+            align-items: end;
+            gap: 10px;
+            min-height: 184px;
+        }
+
+        .revenue-day {
+            display: grid;
+            grid-template-rows: 1fr auto;
+            gap: 9px;
+            min-width: 0;
+            height: 174px;
+            text-align: center;
+        }
+
+        .revenue-track {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            height: 145px;
+            overflow: hidden;
+            border-radius: 8px;
+            background: repeating-linear-gradient(to top, #eee9f0 0 1px, transparent 1px 36px);
+        }
+
+        .revenue-bar {
+            width: min(38px, 68%);
+            min-height: 3px;
+            border-radius: 7px 7px 2px 2px;
+            background: linear-gradient(180deg, #d6b1e2, #9564a6);
+            transition: height 0.35s ease;
+        }
+
+        .revenue-day-label {
+            color: #756d79;
+            font-size: 11px;
+            text-transform: capitalize;
+        }
+
+        .chart-empty {
+            grid-column: 1 / -1;
+            align-self: center;
+            color: #827b86;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .order-status-list {
+            display: grid;
+            gap: 18px;
+        }
+
+        .order-status-row {
+            display: grid;
+            gap: 7px;
+        }
+
+        .order-status-label {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            color: #4a434d;
+            font-size: 13px;
+        }
+
+        .order-status-label strong {
+            color: #302a35;
+        }
+
+        .order-status-track {
+            height: 8px;
+            overflow: hidden;
+            border-radius: 999px;
+            background: #f0edf1;
+        }
+
+        .order-status-fill {
+            display: block;
+            height: 100%;
+            border-radius: inherit;
+            background: var(--status-color);
+            transition: width 0.35s ease;
+        }
+
+        .sales-period-control {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: #756d79;
+            font-size: 12px;
+        }
+
+        .sales-period-control select {
+            min-height: 40px;
+            padding: 8px 30px 8px 11px;
+            border: 1px solid #e5dfe9;
+            border-radius: 10px;
+            background: #fff;
+            color: #302a35;
+            font: inherit;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .sales-kpis {
+            margin-top: 20px;
+        }
+
+        .sales-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.8fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .sales-chart {
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .sales-chart-grid {
+            display: grid;
+            grid-template-columns: repeat(var(--sales-count), minmax(24px, 1fr));
+            align-items: end;
+            gap: 8px;
+            min-height: 190px;
+        }
+
+        .sales-bar-column {
+            display: grid;
+            grid-template-rows: 14px 1fr auto;
+            align-items: end;
+            gap: 6px;
+            height: 180px;
+            min-width: 0;
+            text-align: center;
+        }
+
+        .sales-bar-value {
+            overflow: hidden;
+            color: #756d79;
+            font-size: 9px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .sales-bar-track {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            height: 132px;
+            overflow: hidden;
+            border-radius: 7px;
+            background: repeating-linear-gradient(to top, #eee9f0 0 1px, transparent 1px 33px);
+        }
+
+        .sales-bar {
+            width: min(34px, 70%);
+            min-height: 3px;
+            border-radius: 6px 6px 2px 2px;
+            background: linear-gradient(180deg, #b6d8c4, #508568);
+            transition: height 0.3s ease;
+        }
+
+        .sales-bar-label {
+            overflow: hidden;
+            color: #756d79;
+            font-size: 10px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .sales-chart-empty {
+            display: grid;
+            min-height: 190px;
+            place-items: center;
+            color: #827b86;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .sales-top-products {
+            display: grid;
+            gap: 16px;
+        }
+
+        .sales-product-row {
+            display: grid;
+            gap: 7px;
+        }
+
+        .sales-product-heading {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            color: #4a434d;
+            font-size: 12px;
+        }
+
+        .sales-product-heading span:first-child {
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .sales-product-heading strong {
+            flex-shrink: 0;
+            color: #302a35;
+        }
+
+        .sales-product-track {
+            height: 7px;
+            overflow: hidden;
+            border-radius: 999px;
+            background: #f0edf1;
+        }
+
+        .sales-product-fill {
+            display: block;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #b6d8c4, #508568);
+        }
+
+        .sales-disclaimer {
+            margin: 0 0 20px;
+            color: #827b86;
+            font-size: 12px;
+        }
+
+        .sales-table-wrap {
+            overflow-x: auto;
+        }
+
+        .sales-table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .sales-table th,
+        .sales-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #f0edf1;
+            font-size: 12px;
+        }
+
+        .sales-table th {
+            color: #827b86;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .sales-table td {
+            color: #514a55;
+        }
+
+        .sales-table td:last-child {
+            color: #302a35;
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .sales-table th:last-child {
+            text-align: right;
+        }
+
+        .sales-table .order-status {
+            display: inline-block;
+        }
+
+        .sales-table-empty {
+            padding: 26px 10px !important;
+            color: #827b86 !important;
+            text-align: center;
+        }
+
         /* GRID */
 
         .grid-layout {
@@ -235,6 +574,12 @@
 
         .panel-title h2 {
             font-size: 22px;
+        }
+
+        .panel-subtitle {
+            margin-top: 4px;
+            color: #827b86;
+            font-size: 12px;
         }
 
         /* FORM */
@@ -510,50 +855,248 @@
 
         #pedidos-container {
             display: grid;
-            gap: 18px;
+            gap: 14px;
         }
 
         .pedido {
-            background: white;
-            border-radius: 22px;
-            padding: 22px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            display: grid;
+            gap: 15px;
+            padding: 19px 20px;
+            border: 1px solid #eee8f1;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 6px 18px rgba(50, 35, 60, 0.045);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
         }
 
-        .pedido h3 {
-            margin-bottom: 12px;
+        .pedido:hover {
+            transform: translateY(-1px);
+            border-color: #e4d4eb;
+            box-shadow: 0 10px 24px rgba(50, 35, 60, 0.075);
         }
 
-        .pedido p {
-            margin-bottom: 8px;
-            color: #555;
-        }
-
-        .pedido-actions {
-            display: flex;
+        .orders-toolbar {
+            display: grid;
+            grid-template-columns: minmax(180px, 1fr) 190px auto;
+            align-items: center;
             gap: 10px;
-            margin-top: 15px;
+            margin-bottom: 18px;
         }
 
-        .pedido-actions button {
-            border: none;
-            padding: 12px 16px;
-            border-radius: 14px;
+        .orders-search {
+            position: relative;
+            min-width: 0;
+        }
+
+        .orders-search i {
+            position: absolute;
+            top: 50%;
+            left: 13px;
+            color: #8b818f;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .orders-search input,
+        #pedidos-filter {
+            width: 100%;
+            min-height: 42px;
+            border: 1px solid #e5dfe9;
+            border-radius: 10px;
+            background: #fff;
+            color: #302a35;
+            font: inherit;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .orders-search input {
+            padding: 10px 12px 10px 38px;
+        }
+
+        #pedidos-filter {
+            padding: 9px 12px;
             cursor: pointer;
+        }
+
+        .orders-search input:focus,
+        #pedidos-filter:focus {
+            border-color: #b88dcd;
+            box-shadow: 0 0 0 3px rgba(184, 141, 205, 0.14);
+        }
+
+        .orders-result-count {
+            color: #827b86;
+            font-size: 12px;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .order-card-top,
+        .order-card-bottom,
+        .order-total-row,
+        .order-product-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .order-card-top {
+            align-items: flex-start;
+        }
+
+        .order-reference {
+            margin-bottom: 4px;
+            color: #8b718f;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .order-card-top h3 {
+            color: #302a35;
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .order-date {
+            display: block;
+            margin-top: 4px;
+            color: #827b86;
+            font-size: 11px;
+        }
+
+        .order-status {
+            flex-shrink: 0;
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .order-status.pending {
+            background: #fff4dc;
+            color: #8a651d;
+        }
+
+        .order-status.shipped {
+            background: #f2eaf5;
+            color: #765287;
+        }
+
+        .order-status.delivered {
+            background: #e5f4e9;
+            color: #39704c;
+        }
+
+        .order-status.other {
+            background: #eef0f2;
+            color: #5f6872;
+        }
+
+        .order-items {
+            display: grid;
+            gap: 8px;
+            padding: 12px 0;
+            border-top: 1px solid #f1edf2;
+            border-bottom: 1px solid #f1edf2;
+        }
+
+        .order-items-heading {
+            color: #827b86;
+            font-size: 11px;
             font-weight: 600;
-            transition: 0.3s;
         }
 
-        .enviado {
-            background: #efe5ff;
+        .order-product-row {
+            color: #514a55;
+            font-size: 12px;
         }
 
-        .entregado {
-            background: #dfffe8;
+        .order-product-row span:first-child {
+            min-width: 0;
+            overflow-wrap: anywhere;
         }
 
-        .pedido-actions button:hover {
-            transform: translateY(-2px);
+        .order-product-row span:last-child {
+            flex-shrink: 0;
+            color: #756d79;
+            font-weight: 600;
+        }
+
+        .order-total-row > span {
+            color: #756d79;
+            font-size: 12px;
+        }
+
+        .order-total-row strong {
+            color: #302a35;
+            font-size: 17px;
+        }
+
+        .order-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .order-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            min-height: 38px;
+            padding: 8px 12px;
+            border: 1px solid #e7ddec;
+            border-radius: 9px;
+            background: #f6f0f8;
+            color: #694a78;
+            font: inherit;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .order-action.deliver {
+            border-color: #d4e8d9;
+            background: #edf7ef;
+            color: #39704c;
+        }
+
+        .order-action:hover:not(:disabled) {
+            transform: translateY(-1px);
+            background: #ece0f0;
+        }
+
+        .order-action.deliver:hover:not(:disabled) {
+            background: #e0f0e4;
+        }
+
+        .order-action:disabled {
+            cursor: default;
+            opacity: 0.55;
+        }
+
+        .orders-empty {
+            display: grid;
+            justify-items: center;
+            gap: 8px;
+            padding: 38px 20px;
+            border: 1px dashed #e4dce8;
+            border-radius: 14px;
+            color: #827b86;
+            text-align: center;
+        }
+
+        .orders-empty i {
+            color: #aa8bb5;
+            font-size: 22px;
+        }
+
+        .orders-empty p {
+            font-size: 13px;
         }
 
         /* RESPONSIVE */
@@ -581,7 +1124,23 @@
                 grid-template-columns: 1fr;
             }
 
+            .orders-toolbar {
+                grid-template-columns: minmax(0, 1fr) 180px;
+            }
+
+            .orders-result-count {
+                grid-column: 1 / -1;
+            }
+
+            .sales-layout {
+                grid-template-columns: 1fr;
+            }
+
             .dashboard {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .dashboard-insights {
                 grid-template-columns: 1fr;
             }
 
@@ -633,6 +1192,36 @@
                 align-items: flex-start;
             }
 
+            .orders-toolbar {
+                grid-template-columns: 1fr;
+            }
+
+            .orders-result-count {
+                grid-column: auto;
+                text-align: left;
+            }
+
+            #ventas-section .panel-title {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .sales-period-control {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .order-card-bottom {
+                align-items: stretch;
+                flex-direction: column;
+            }
+
+            .order-actions {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
             .producto-admin {
                 padding: 10px;
             }
@@ -662,6 +1251,12 @@
 
             .card p {
                 font-size: 26px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .dashboard {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -877,20 +1472,53 @@
             <div class="dashboard">
 
                 <div class="card">
-                    <h3>💰 Ingresos</h3>
+                    <h3>💰 Valor de pedidos</h3>
                     <p id="total-ingresos">S/ 0</p>
+                    <span class="card-caption">Total registrado</span>
                 </div>
 
                 <div class="card">
                     <h3>📦 Pedidos</h3>
                     <p id="total-pedidos">0</p>
+                    <span class="card-caption">Pedidos recibidos</span>
                 </div>
 
                 <div class="card">
                     <h3>⏳ Pendientes</h3>
                     <p id="pedidos-pendientes">0</p>
+                    <span class="card-caption">Por preparar o enviar</span>
                 </div>
 
+                <div class="card">
+                    <h3>💍 Productos</h3>
+                    <p id="total-productos">0</p>
+                    <span class="card-caption">En el catálogo</span>
+                </div>
+
+            </div>
+
+            <div class="dashboard-insights">
+                <section class="insight-panel" aria-labelledby="revenue-title">
+                    <div class="insight-heading">
+                        <div>
+                            <p class="insight-eyebrow">ACTIVIDAD RECIENTE</p>
+                            <h2 id="revenue-title">Valor de pedidos</h2>
+                        </div>
+                        <span id="weekly-total" class="insight-total">S/ 0.00</span>
+                    </div>
+                    <p class="chart-caption">Últimos 7 días</p>
+                    <div id="revenue-chart" class="revenue-chart" role="img" aria-label="Valor diario de pedidos durante los últimos siete días"></div>
+                </section>
+
+                <section class="insight-panel" aria-labelledby="order-status-title">
+                    <div class="insight-heading">
+                        <div>
+                            <p class="insight-eyebrow">OPERACIÓN</p>
+                            <h2 id="order-status-title">Estado de pedidos</h2>
+                        </div>
+                    </div>
+                    <div id="order-status-list" class="order-status-list"></div>
+                </section>
             </div>
 
         </section>
@@ -966,10 +1594,30 @@
                 <div class="panel">
 
                     <div class="panel-title">
-                        <h2>🧾 Pedidos recientes</h2>
+                        <div>
+                            <h2>Pedidos recientes</h2>
+                            <p class="panel-subtitle">Gestión de pedidos y despachos</p>
+                        </div>
                     </div>
 
-                    <div id="pedidos-container"></div>
+                    <div class="orders-toolbar">
+                        <label class="orders-search">
+                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                            <input type="search" id="pedidos-search" placeholder="Buscar pedido o producto" aria-label="Buscar pedido o producto">
+                        </label>
+                        <select id="pedidos-filter" aria-label="Filtrar pedidos por estado">
+                            <option value="todos">Todos los estados</option>
+                            <option value="pendiente">Pendientes</option>
+                            <option value="enviado">Enviados</option>
+                            <option value="entregado">Entregados</option>
+                            <option value="otros">Otros estados</option>
+                        </select>
+                        <span id="pedidos-result-count" class="orders-result-count">0 pedidos</span>
+                    </div>
+
+                    <div id="pedidos-container">
+                        <div class="orders-empty"><i class="fa-solid fa-box-open" aria-hidden="true"></i><p>Cargando pedidos...</p></div>
+                    </div>
 
                 </div>
 
@@ -984,12 +1632,90 @@
             <div class="panel">
 
                 <div class="panel-title">
-                    <h2>💰 Ventas</h2>
+                    <div>
+                        <h2>Ventas registradas</h2>
+                        <p class="panel-subtitle">Resumen comercial basado en los pedidos recibidos.</p>
+                    </div>
+                    <label class="sales-period-control" for="ventas-periodo">
+                        <span>Período</span>
+                        <select id="ventas-periodo">
+                            <option value="7d">Últimos 7 días</option>
+                            <option value="30d">Últimos 30 días</option>
+                            <option value="12m">Últimos 12 meses</option>
+                        </select>
+                    </label>
                 </div>
 
-                <p style="color:#777;">
-                    Próximamente estadísticas de ventas.
-                </p>
+                <div class="dashboard sales-kpis">
+                    <div class="card">
+                        <h3>Valor de pedidos</h3>
+                        <p id="ventas-total-valor">S/ 0.00</p>
+                        <span class="card-caption">En el período seleccionado</span>
+                    </div>
+                    <div class="card">
+                        <h3>Pedidos</h3>
+                        <p id="ventas-total-pedidos">0</p>
+                        <span class="card-caption">Con fecha registrada</span>
+                    </div>
+                    <div class="card">
+                        <h3>Ticket promedio</h3>
+                        <p id="ventas-ticket-promedio">S/ 0.00</p>
+                        <span class="card-caption">Valor promedio por pedido</span>
+                    </div>
+                    <div class="card">
+                        <h3>Entregados</h3>
+                        <p id="ventas-entregados">0</p>
+                        <span class="card-caption">Pedidos completados</span>
+                    </div>
+                </div>
+
+                <p class="sales-disclaimer">Los importes representan pedidos registrados; el sistema aún no registra pagos confirmados.</p>
+
+                <div class="sales-layout">
+                    <section class="insight-panel" aria-labelledby="sales-chart-title">
+                        <div class="insight-heading">
+                            <div>
+                                <p class="insight-eyebrow">TENDENCIA</p>
+                                <h2 id="sales-chart-title">Valor por período</h2>
+                            </div>
+                        </div>
+                        <p id="sales-chart-caption" class="chart-caption">Importes en soles</p>
+                        <div id="sales-chart" class="sales-chart" role="img" aria-label="Gráfica de pedidos por período"></div>
+                    </section>
+
+                    <section class="insight-panel" aria-labelledby="sales-products-title">
+                        <div class="insight-heading">
+                            <div>
+                                <p class="insight-eyebrow">CATÁLOGO</p>
+                                <h2 id="sales-products-title">Productos más pedidos</h2>
+                            </div>
+                        </div>
+                        <div id="sales-top-products" class="sales-top-products"></div>
+                    </section>
+                </div>
+
+                <section class="insight-panel" aria-labelledby="sales-history-title">
+                    <div class="insight-heading">
+                        <div>
+                            <p class="insight-eyebrow">DETALLE</p>
+                            <h2 id="sales-history-title">Pedidos del período</h2>
+                        </div>
+                    </div>
+                    <div class="sales-table-wrap">
+                        <table class="sales-table">
+                            <thead>
+                                <tr>
+                                    <th>Pedido</th>
+                                    <th>Fecha</th>
+                                    <th>Productos</th>
+                                    <th>Estado</th>
+                                    <th>Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody id="sales-table-body"></tbody>
+                        </table>
+                    </div>
+                </section>
 
             </div>
 

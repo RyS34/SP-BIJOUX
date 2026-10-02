@@ -159,6 +159,30 @@
         .input-group {
             margin-bottom: 20px;
         }
+        /*Estilos para la fila de "Recordarme" */
+        .remember-row {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            margin: 0 0 8px;
+        }
+
+        .remember-row input {
+            width: 16px;
+            height: 16px;
+            margin: 0;
+            accent-color: #713b7c;
+            cursor: pointer;
+        }
+
+        .remember-row label {
+            display: inline;
+            margin: 0;
+            color: #403744;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+        }
 
         /*Estilos para las etiquetas de los inputs */
         .input-group label {
@@ -308,6 +332,11 @@
                     <div class="input-wrapper">
                         <input type="password" id="pass" placeholder="••••••••" required>
                     </div>
+                </div>
+
+                <div class="remember-row">
+                    <input type="checkbox" id="remember-user">
+                    <label for="remember-user">Recordarme en este dispositivo</label>
                 </div>
 
                 <button type="submit" class="login-btn">
