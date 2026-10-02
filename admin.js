@@ -214,22 +214,29 @@ function escucharProductos() {
 
             productosContainer.innerHTML += `
                 <div class="producto-admin">
-                    <img src="${p.imagen}" width="80">
-
-                    <div>
-                        <h4>${p.nombre}</h4>
-                        <p>S/ ${p.precio}</p>
+                    <div class="producto-info">
+                        <img src="${p.imagen}" alt="${p.nombre}">
+                        <div class="product-copy">
+                            <h4>${p.nombre}</h4>
+                            <p class="product-price">S/ ${p.precio}</p>
+                            <div class="product-meta">
+                                <span>${p.categoria || "Sin categoría"}</span>
+                                <span>Stock: ${p.stock ?? 0}</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <button onclick="eliminarProducto('${docSnap.id}')">🗑</button>
-                    <button onclick="editarProducto(
+                    <div class="actions">
+                        <button class="product-action delete" type="button" title="Eliminar producto" aria-label="Eliminar ${p.nombre}" onclick="eliminarProducto('${docSnap.id}')"><i class="fa-solid fa-trash-can"></i></button>
+                        <button class="product-action edit" type="button" title="Editar producto" aria-label="Editar ${p.nombre}" onclick="editarProducto(
                         '${docSnap.id}',
                         '${p.nombre}',
                         '${p.precio}',
                         '${p.imagen}',
                         '${p.categoria}',
                         '${p.stock}'
-                    )">✏️</button>
+                    )"><i class="fa-solid fa-pen"></i></button>
+                    </div>
                 </div>
             `;
         });
